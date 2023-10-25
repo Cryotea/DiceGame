@@ -1,24 +1,54 @@
 ﻿public class Player
 {
-    public double health = 20;
-    public double damage = 1;
-    public double speed = 1;
-    public double defence = 1;
-    public string weapon = "none";
+    public double health {get; set;} = 20;
+    public double damage {get; set;} = 1;
+    public double speed {get; set;} = 1;
+    public double defence {get; set;} = 1;
+    public string weapon {get; set;} = "noWeapon";
 }
 
 public class Weapon
 {
+    public double[] noWeapon = new double[4];
 
+    public Weapon()
+    {
+        noWeapon[0] = 0;
+        noWeapon[1] = 0;
+        noWeapon[2] = 0;
+        noWeapon[3] = 0;
+    }
 }
 
 public class EnemySlime
 {
-    public double health = 15;
-    public double damage = 0.5;
-    public double speed = 1;
-    public double defence = 1.2;
-    public string weapon = "none";
+    public double health {get; set;} = 15;
+    public double damage {get; set;} = 0.5;
+    public double speed {get; set;} = 1;
+    public double defence {get; set;} = 1.2;
+    public string weapon {get; set;} = "noWeapon";
+}
+
+public class Fight
+{
+    public void PlayerAtack( out double newEnemyHealth, double dice, double enemyhealth, double enemydefence, double playerdamage)
+    {
+        Console.WriteLine("press enter to throw the dice");
+        Console.ReadLine();
+        enemyhealth = enemyhealth - dice * playerdamage / enemydefence;
+        double dmgToEnemy = dice * playerdamage / enemydefence;
+        Console.WriteLine($"you rolled a {dice} and attacked for {dmgToEnemy} DMG. The Enemy has {enemyhealth} HP left. ");
+        newEnemyHealth = enemyhealth;
+    }
+
+
+    public void EnemyAtack(out double newPlayerHealth, double dice, double playerhealth, double playerdefence, double enemydamage)
+    {
+        playerhealth = playerhealth - dice * enemydamage / playerdefence;
+        double dmgToPlayer = dice * enemydamage / playerdefence;
+        Console.WriteLine($"The enemy rollad a {dice} and attacked you for {dmgToPlayer} DMG. you have {playerhealth} HP left. ");
+        newPlayerHealth = playerhealth;  
+    }
 }
 
 class Program
@@ -33,6 +63,7 @@ class Program
 
         var slime = new EnemySlime();
 
+        var thisfight = new Fight();
 
         bool gameEnd = false;
 
@@ -40,17 +71,15 @@ class Program
 
         while (!gameEnd)
         {
-            Console.WriteLine("press enter to throw the dice");
-            Console.ReadLine();
-            dice = random.Next(1,7);
-            slime.health = slime.health - dice / slime.defence;
-            double dmgToEnemy = dice / slime.defence;
-            Console.WriteLine($"you rolled a {dice} and attacked for {dmgToEnemy} DMG. The Enemy has {slime.health} HP left. ");
+            double newEnemyHealth = 0;
+            double newPlayerHealth = 0;
+            thisfight.PlayerAtack( out newEnemyHealth, random.Next(1,7) , slime.health, slime.defence, player.damage);  
 
-            dice = random.Next(1,7);
-            player.health = player.health - dice / player.defence;
-            double dmgToPlayer = dice / player.defence;
-            Console.WriteLine($"the enemy rolled a {dice} and you recieved {dmgToPlayer} DMG. You have {player.health} HP left.");
+            slime.health = newEnemyHealth;
+
+            thisfight.EnemyAtack (out newPlayerHealth, random.Next(1,7), player.health, player.defence, slime.damage);
+
+            player.health = newPlayerHealth;
 
         if (player.health <= 0)
         {
