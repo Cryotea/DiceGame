@@ -1,32 +1,32 @@
 ﻿public class Player
 {
-    public double health {get; set;} = 20;
-    public double damage {get; set;} = 1;
-    public double speed {get; set;} = 1;
-    public double defence {get; set;} = 1;
-    public string weapon {get; set;} = "noWeapon";
+    public double Health {get; set;} = 20;
+    public double Damage {get; set;} = 1;
+    public double Speed {get; set;} = 1;
+    public double Defence {get; set;} = 1;
+    public string Weapon {get; set;} = "NoWeapon";
 }
 
 public class Weapon
 {
-    public double[] noWeapon = new double[4];
+    public double[] NoWeapon = new double[4];
 
     public Weapon()
     {
-        noWeapon[0] = 0;
-        noWeapon[1] = 0;
-        noWeapon[2] = 0;
-        noWeapon[3] = 0;
+        NoWeapon[0] = 0;
+        NoWeapon[1] = 0;
+        NoWeapon[2] = 0;
+        NoWeapon[3] = 0;
     }
 }
 
 public class EnemySlime
 {
-    public double health {get; set;} = 15;
-    public double damage {get; set;} = 0.5;
-    public double speed {get; set;} = 1;
-    public double defence {get; set;} = 1.2;
-    public string weapon {get; set;} = "noWeapon";
+    public double Health {get; set;} = 15;
+    public double Damage {get; set;} = 0.5;
+    public double Speed {get; set;} = 1;
+    public double Defence {get; set;} = 1.2;
+    public string Weapon {get; set;} = "noWeapon";
 }
 
 public class Fight
@@ -63,31 +63,31 @@ class Program
 
         var slime = new EnemySlime();
 
-        var thisfight = new Fight();
+        var thisFight = new Fight();
 
         bool gameEnd = false;
 
-        double end = 0; 
+        bool hasFainted = false; 
 
         while (!gameEnd)
         {
             double newEnemyHealth = 0;
             double newPlayerHealth = 0;
-            thisfight.PlayerAtack( out newEnemyHealth, random.Next(1,7) , slime.health, slime.defence, player.damage);  
+            thisFight.PlayerAtack( out newEnemyHealth, random.Next(1,7) , slime.Health, slime.Defence, player.Damage);  
 
-            slime.health = newEnemyHealth;
+            slime.Health = newEnemyHealth;
 
-            thisfight.EnemyAtack (out newPlayerHealth, random.Next(1,7), player.health, player.defence, slime.damage);
+            thisFight.EnemyAtack (out newPlayerHealth, random.Next(1,7), player.Health, player.Defence, slime.Damage);
 
-            player.health = newPlayerHealth;
+            player.Health = newPlayerHealth;
 
-        if (player.health <= 0)
+        if (player.Health <= 0)
         {
             gameEnd = true;
-            end = 1;
+            hasFainted = true;
         }
     
-        if (slime.health <= 0)
+        if (slime.Health <= 0)
         {
             gameEnd = true;
             
@@ -96,7 +96,7 @@ class Program
         }
 
 
-        if (end ==1)
+        if (hasFainted == true )
     {
         Console.WriteLine("You lost! The enemy has killed you D:");
         Console.WriteLine("Press enter to exit");
