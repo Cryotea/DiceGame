@@ -1,55 +1,77 @@
-﻿public class Player
+﻿using System.Data;
+
+public interface IFighter
 {
+    public string Name {get; set;}
+    public double Health {get; set;} 
+    public double Damage {get; set;} 
+    public double Speed {get; set;} 
+    public double Defence {get; set;} 
+    public IWeapon Weapon {get; set;}
+    public bool IsPlayer {get; set;}
+}
+public class Player : IFighter
+{
+    public string Name {get; set;} = "Player";
     public double Health {get; set;} = 20;
     public double Damage {get; set;} = 1;
     public double Speed {get; set;} = 1;
     public double Defence {get; set;} = 1;
-    public string Weapon {get; set;} = "NoWeapon";
+    public IWeapon Weapon {get; set;} = new CopperShortSword();
+    public bool IsPlayer {get; set;} = true;
 }
 
-public class Weapon
-{
-    public double[] NoWeapon = new double[4];
-
-    public Weapon()
+public interface IWeapon
     {
-        NoWeapon[0] = 0;
-        NoWeapon[1] = 0;
-        NoWeapon[2] = 0;
-        NoWeapon[3] = 0;
+        public void AttackPattern(IFighter attacker, IFighter defender);
+    }
+
+public class NoWeapon : IWeapon
+{
+    public void AttackPattern(IFighter attacker, IFighter defender)
+    {
+        var random = new Random();
+        double dice = random.Next(1,7);
+        Console.WriteLine("Press enter to throw the dice");
+         if (attacker.IsPlayer == true)
+         {
+            Console.ReadLine();
+         }
+        defender.Health = defender.Health - dice * attacker.Damage / defender.Defence;
+        Console.WriteLine($"{attacker.Name} rolled a {dice} and attacked {defender.Name} for {dice * attacker.Damage / defender.Defence} {defender.Name} has {defender.Health} HP left");
+        
     }
 }
 
-public class EnemySlime
+public class CopperShortSword : IWeapon
 {
+     public void AttackPattern(IFighter attacker, IFighter defender)
+    {
+        var random = new Random();
+        double dice = random.Next(1,7);
+        Console.WriteLine("Press enter to throw the dice");
+         if (attacker.IsPlayer == true)
+         {
+            Console.ReadLine();
+         }
+        defender.Health = defender.Health - (dice + attacker.Speed) * attacker.Damage  / defender.Defence;
+        Console.WriteLine($"{attacker.Name} rolled a {dice} and attacked {defender.Name} for {(dice + attacker.Speed)* attacker.Damage / defender.Defence} {defender.Name} has {defender.Health} HP left");
+        
+    }
+}
+
+public class EnemySlime : IFighter
+{
+    public string Name {get; set;} = "Slime"; 
     public double Health {get; set;} = 15;
     public double Damage {get; set;} = 0.5;
     public double Speed {get; set;} = 1;
     public double Defence {get; set;} = 1.2;
-    public string Weapon {get; set;} = "noWeapon";
+    public IWeapon Weapon {get; set;} = new NoWeapon ();
+    public bool IsPlayer {get; set;} = false;
 }
 
-public class Fight
-{
-    public void PlayerAtack( out double newEnemyHealth, double dice, double enemyhealth, double enemydefence, double playerdamage)
-    {
-        Console.WriteLine("press enter to throw the dice");
-        Console.ReadLine();
-        enemyhealth = enemyhealth - dice * playerdamage / enemydefence;
-        double dmgToEnemy = dice * playerdamage / enemydefence;
-        Console.WriteLine($"you rolled a {dice} and attacked for {dmgToEnemy} DMG. The Enemy has {enemyhealth} HP left. ");
-        newEnemyHealth = enemyhealth;
-    }
 
-
-    public void EnemyAtack(out double newPlayerHealth, double dice, double playerhealth, double playerdefence, double enemydamage)
-    {
-        playerhealth = playerhealth - dice * enemydamage / playerdefence;
-        double dmgToPlayer = dice * enemydamage / playerdefence;
-        Console.WriteLine($"The enemy rollad a {dice} and attacked you for {dmgToPlayer} DMG. you have {playerhealth} HP left. ");
-        newPlayerHealth = playerhealth;  
-    }
-}
 
 class Program
 {
@@ -63,7 +85,7 @@ class Program
 
         var slime = new EnemySlime();
 
-        var thisFight = new Fight();
+       // var thisFight = new Fight();
 
         bool gameEnd = false;
 
@@ -71,16 +93,10 @@ class Program
 
         while (!gameEnd)
         {
-            double newEnemyHealth = 0;
-            double newPlayerHealth = 0;
-            thisFight.PlayerAtack( out newEnemyHealth, random.Next(1,7) , slime.Health, slime.Defence, player.Damage);  
+            player.Weapon.AttackPattern(player, slime);
 
-            slime.Health = newEnemyHealth;
-
-            thisFight.EnemyAtack (out newPlayerHealth, random.Next(1,7), player.Health, player.Defence, slime.Damage);
-
-            player.Health = newPlayerHealth;
-
+            slime.Weapon.AttackPattern(slime, player);
+           
         if (player.Health <= 0)
         {
             gameEnd = true;
