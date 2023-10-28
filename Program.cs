@@ -8,7 +8,7 @@ public interface IFighter
     public double Speed {get; set;} 
     public double Defence {get; set;} 
     public IWeapon Weapon {get; set;}
-    public bool IsPlayer {get; set;}
+   
 }
 public class Player : IFighter
 {
@@ -18,7 +18,7 @@ public class Player : IFighter
     public double Speed {get; set;} = 1;
     public double Defence {get; set;} = 1;
     public IWeapon Weapon {get; set;} = new CopperShortSword();
-    public bool IsPlayer {get; set;} = true;
+    
 }
 
 public interface IWeapon
@@ -33,7 +33,7 @@ public class NoWeapon : IWeapon
         var random = new Random();
         double dice = random.Next(1,7);
         Console.WriteLine("Press enter to throw the dice");
-         if (attacker.IsPlayer == true)
+         if (attacker is Player)
          {
             Console.ReadLine();
          }
@@ -50,7 +50,7 @@ public class CopperShortSword : IWeapon
         var random = new Random();
         double dice = random.Next(1,7);
         Console.WriteLine("Press enter to throw the dice");
-         if (attacker.IsPlayer == true)
+         if (attacker is Player)
          {
             Console.ReadLine();
          }
@@ -68,7 +68,7 @@ public class EnemySlime : IFighter
     public double Speed {get; set;} = 1;
     public double Defence {get; set;} = 1.2;
     public IWeapon Weapon {get; set;} = new NoWeapon ();
-    public bool IsPlayer {get; set;} = false;
+    
 }
 
 
@@ -112,7 +112,7 @@ class Program
         }
 
 
-        if (hasFainted == true )
+        if (hasFainted)
     {
         Console.WriteLine("You lost! The enemy has killed you D:");
         Console.WriteLine("Press enter to exit");
