@@ -6,10 +6,12 @@ public class NoWeapon : IWeapon
     {
         var random = new Random();
         double dice = random.Next(1,7);
-        Console.WriteLine("Press enter to throw the dice");
+        
          if (attacker is Player)
          {
+            Console.WriteLine("Press enter to throw the dice");
             Console.ReadLine();
+            
          }
         defender.Health = defender.Health - dice * attacker.Damage / defender.Defence;
         Console.WriteLine($"{attacker.Name} rolled a {dice} and attacked {defender.Name} for {dice * attacker.Damage / defender.Defence} Damage. {defender.Name} has {defender.Health} HP left");

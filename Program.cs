@@ -13,9 +13,7 @@ class Program
 
         var player = new Player();
 
-        var slime = new EnemySlime();
-
-       // var thisFight = new Fight();
+        var enemy = new EnemySlime();  // ich brauch n weg diese var easy zu eandern 
 
         bool gameEnd = false;
 
@@ -23,37 +21,36 @@ class Program
 
         while (!gameEnd)
         {
-            player.Weapon.AttackPattern(player, slime);
+            player.Weapon.AttackPattern(player, enemy);
 
-            slime.Weapon.AttackPattern(slime, player);
+            enemy.Weapon.AttackPattern(enemy, player);
            
-        if (player.Health <= 0)
-        {
-            gameEnd = true;
-            hasFainted = true;
-        }
+            if (player.Health <= 0)
+            {
+                gameEnd = true;
+                hasFainted = true;
+            }
     
-        if (slime.Health <= 0)
-        {
-            gameEnd = true;
-            
-        }
+            if (enemy.Health <= 0)
+            {
+                gameEnd = true;
+            }
 
         }
 
 
         if (hasFainted)
-    {
-        Console.WriteLine("You lost! The enemy has killed you D:");
-        Console.WriteLine("Press enter to exit");
-        Console.ReadLine();
-    }
+        {
+            Console.WriteLine("You lost! The enemy has killed you D:");
+            Console.WriteLine("Press enter to exit");
+            Console.ReadLine();
+        }  
         else
-    {
-        Console.WriteLine("You won the fight! Good job!");
-        Console.WriteLine("Press enter to exit");
-        Console.ReadLine();
-    }
+        {
+            Console.WriteLine("You won the fight! Good job!");
+            Console.WriteLine("Press enter to exit");
+            Console.ReadLine();
+        }
 
     }
 }
