@@ -13,9 +13,7 @@ class Program
 
         var player = new Player();
 
-        // var enemy = new EnemySlime
-        Fight.GetEnemy(out IFighter enemy);  // ich brauch n weg denn ifighter aus der funktion zu bekommen zu erst hab ich es mit ner var probiert
-                         // aber das hat mir direkt n fehle in der funtion gegeben also hab ich es mit IFighter probiert
+        var enemy = Fight.GetEnemy();  
 
         bool gameEnd = false;
 
