@@ -13,31 +13,43 @@ class Program
 
         var player = new Player();
 
-        var enemy = Fight.GetEnemy();  
-
-        bool gameEnd = false;
-
         bool hasFainted = false; 
 
-        while (!gameEnd)
-        {
-            player.Weapon.AttackPattern(player, enemy);
+        double encounters = 0;
 
-            enemy.Weapon.AttackPattern(enemy, player);
+            while (encounters < 4)
+            {
+                var enemy = Fight.GetEnemy();  
+
+                bool gameEnd = false;
+
+                encounters ++ ;
+
+                player.Health = player.MaxHealth;
+
+                enemy.Health = enemy.MaxHealth;
+
+                while (!gameEnd)
+                {
+                    player.Weapon.AttackPattern(player, enemy);
+
+                    enemy.Weapon.AttackPattern(enemy, player);
            
-            if (player.Health <= 0)
-            {
-                gameEnd = true;
-                hasFainted = true;
-            }
+                if (player.Health <= 0)
+                {
+                    gameEnd = true;
+                    hasFainted = true;
+                    encounters = 4;
+                }
     
-            if (enemy.Health <= 0)
-            {
-                gameEnd = true;
+                if (enemy.Health <= 0)
+                {
+                    gameEnd = true;
+                    Console.WriteLine($"you defeated {enemy.Name}");
+                }
+
             }
-
         }
-
 
         if (hasFainted)
         {
@@ -47,7 +59,7 @@ class Program
         }  
         else
         {
-            Console.WriteLine("You won the fight! Good job!");
+            Console.WriteLine("You won all the fights! Good job!");
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }

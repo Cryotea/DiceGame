@@ -10,5 +10,6 @@ public interface IFighter
     public double Speed {get; set;} 
     public double Defence {get; set;} 
     public IWeapon Weapon {get; set;}
+    public double MaxHealth {get; set;}
    
 }

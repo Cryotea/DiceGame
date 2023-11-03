@@ -10,5 +10,6 @@ public class EnemySlime : IFighter
     public double Speed {get; set;} = 1;
     public double Defence {get; set;} = 1.2;
     public IWeapon Weapon {get; set;} = new NoWeapon ();
+    public double MaxHealth {get; set;} = 15 ;
     
 }

@@ -8,5 +8,5 @@ public class Player : IFighter
     public double Speed {get; set;} = 1;
     public double Defence {get; set;} = 1;
     public IWeapon Weapon {get; set;} = new CopperShortSword();
-    
+    public double MaxHealth {get; set;} = 20;
 }
