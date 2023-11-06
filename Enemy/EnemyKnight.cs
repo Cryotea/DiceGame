@@ -1,8 +1,7 @@
-namespace diceGame.Enemy;
 using diceGame.Weapon;
 using diceGame;
-
-public class EnemyKnight : IFighter
+namespace diceGame.Enemy;
+public class EnemyKnight : IEnemy
 {
     public string Name {get; set;} = "Knight"; 
     public double Health {get; set;} = 10;  
@@ -12,4 +11,18 @@ public class EnemyKnight : IFighter
     public IWeapon Weapon {get; set;} = new IronSword ();
     public double MaxHealth{get; set;} = 10;
     
+}
+
+public object Clone()
+{
+    return new EnemyKnight()
+    {
+        Name = Name,
+        Health = Health,
+        Damage = Damage,
+        Speed = Speed,
+        Defence = Defence,
+        Weapon = Weapon,
+        MaxHealth = MaxHealth,
+    };
 }
