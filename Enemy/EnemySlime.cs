@@ -11,19 +11,19 @@ public class EnemySlime : IEnemy
     public double Defence {get; set;} = 1.2;
     public IWeapon Weapon {get; set;} = new NoWeapon ();
     public double MaxHealth {get; set;} = 15 ;
-    
-}
-
-public object Clone()
-{
-    return new EnemySlime()
+    public object Clone()
     {
-        Name = Name,
-        Health = Health,
-        Damage = Damage,
-        Speed = Speed,
-        Defence = Defence,
-        Weapon = Weapon,
-        MaxHealth = MaxHealth,
-    };
+        return new EnemySlime()
+        {
+            Name = Name,
+            Health = Health,
+            Damage = Damage,
+            Speed = Speed,
+            Defence = Defence,
+            Weapon = Weapon,
+            MaxHealth = MaxHealth,
+        };
+    }
+
+
 }

@@ -10,19 +10,18 @@ public class EnemyKnight : IEnemy
     public double Defence {get; set;} = 1;
     public IWeapon Weapon {get; set;} = new IronSword ();
     public double MaxHealth{get; set;} = 10;
-    
+    public object Clone()
+    {
+        return new EnemyKnight()
+        {
+            Name = Name,
+            Health = Health,
+            Damage = Damage,
+            Speed = Speed,
+            Defence = Defence,
+            Weapon = Weapon,
+            MaxHealth = MaxHealth,
+        };
+    }
 }
 
-public object Clone()
-{
-    return new EnemyKnight()
-    {
-        Name = Name,
-        Health = Health,
-        Damage = Damage,
-        Speed = Speed,
-        Defence = Defence,
-        Weapon = Weapon,
-        MaxHealth = MaxHealth,
-    };
-}
