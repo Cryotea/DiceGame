@@ -14,26 +14,28 @@ class Program
         var player = new Player();
 
         bool hasFainted = false; 
-
+        
         double encounters = 0;
 
-            while (encounters < 4)
+        Console.WriteLine("Wellcome to DiceGame \nPlease input youre Name ");
+        player.Name = Console.ReadLine();
+
+        while (encounters < 4)
+        {
+            var enemy = Fight.GetEnemy();  
+
+            bool gameEnd = false;
+
+            encounters ++ ;
+
+            player.Health = player.MaxHealth;
+
+            Console.WriteLine($"\n{player.Name} encountered a {enemy.Name}");
+            while (!gameEnd)
             {
-                var enemy = Fight.GetEnemy();  
+                player.Weapon.AttackPattern(player, enemy);
 
-                bool gameEnd = false;
-
-                encounters ++ ;
-
-                player.Health = player.MaxHealth;
-
-                enemy.Health = enemy.MaxHealth;
-
-                while (!gameEnd)
-                {
-                    player.Weapon.AttackPattern(player, enemy);
-
-                    enemy.Weapon.AttackPattern(enemy, player);
+                enemy.Weapon.AttackPattern(enemy, player);
            
                 if (player.Health <= 0)
                 {
@@ -45,7 +47,7 @@ class Program
                 if (enemy.Health <= 0)
                 {
                     gameEnd = true;
-                    Console.WriteLine($"you defeated {enemy.Name}");
+                    Console.WriteLine($"{player.Name} defeated {enemy.Name}");
                 }
 
             }
@@ -53,13 +55,13 @@ class Program
 
         if (hasFainted)
         {
-            Console.WriteLine("You lost! The enemy has killed you D:");
+            Console.WriteLine($"You lost! {player.Name} has died D:");
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }  
         else
         {
-            Console.WriteLine("You won all the fights! Good job!");
+            Console.WriteLine($"{player.Name} won all the fights! Good job!");
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }
