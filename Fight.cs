@@ -8,7 +8,8 @@ public class Fight
     private static readonly (int, IEnemy) [] Enemies =
     {
        (2, new EnemySlime()),
-       (2, new EnemyKnight())
+       (2, new EnemyKnight()),
+       (2, new EnemyArcher())
 
     };
     public static IEnemy GetEnemy()
@@ -17,16 +18,25 @@ public class Fight
         double encounters = 0;
         while (encounters == 0)
         { 
-            int attackerNumber = random.Next(0,2);
-            (int, IEnemy) currentEnemy = Enemies[attackerNumber];
-            if (currentEnemy.Item1 > 0)
+            int attackerNumber = random.Next(0, Enemies.Length);
+            
+            if (Enemies[attackerNumber].Item1 > 0)
             {
-                encounters = currentEnemy.Item1;
-                currentEnemy.Item1--;
-                return currentEnemy.Item2.Clone() as IEnemy;
+                encounters = Enemies[attackerNumber].Item1;
+                Enemies[attackerNumber].Item1--;
+                return Enemies[attackerNumber].Item2.Clone() as IEnemy;
             }
         }
         return null;
     }
 
+    public static int GetEnemyEncounters()
+    {
+        int AllEnemyEncounters = 0;
+        foreach(var entry in Enemies)
+        {
+            AllEnemyEncounters += entry.Item1;
+        }
+    return AllEnemyEncounters;
+    }
 }
