@@ -23,5 +23,9 @@ public class EnemyKnight : IEnemy
             MaxHealth = MaxHealth,
         };
     }
+     public void GetStats(Player player)
+    {
+        player.Damage += 0.2;
+    }
 }
 

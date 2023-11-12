@@ -2,6 +2,7 @@ namespace diceGame.Enemy;
 using diceGame.Weapon;
 using diceGame;
 
+
 public class EnemySlime : IEnemy
 {
     public string Name {get; set;} = "Slime"; 
@@ -25,5 +26,8 @@ public class EnemySlime : IEnemy
         };
     }
 
-
+    public void GetStats(Player player)
+    {
+        player.MaxHealth += 5;
+    }
 }
