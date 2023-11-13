@@ -9,13 +9,6 @@ public class Bow : IWeapon
         double critDice = random.Next(1,5);
         double critMultiplier = 1;
         bool isCrit = false;
-        
-        if (attacker is Player)
-        {
-            Console.WriteLine("Press enter to throw the dice");
-            Console.ReadLine();
-           
-        }
 
          if (critDice == 4) 
         {

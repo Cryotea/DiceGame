@@ -5,7 +5,7 @@ using diceGame;
 public class SmallPotion : IItem
 {
 
-    public double Health = 15;
+    private double Health = 15;
     public void UseItem(IFighter user)
     {
         user.Health += Health;
