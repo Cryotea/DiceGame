@@ -34,7 +34,7 @@ class Program
                 bool usedMove = false;
                 while (!usedMove)
                 {
-                    player.PlayerMove(player , enemy, usedMove);
+                   usedMove = player.PlayerMove(player , enemy, usedMove);
                 }
 
                 enemy.Weapon.AttackPattern(enemy, player);
