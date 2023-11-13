@@ -31,7 +31,11 @@ class Program
             Console.WriteLine($"\n{player.Name} encountered a {enemy.Name}");
             while (!gameEnd)
             {
-                player.Weapon.AttackPattern(player, enemy);
+                bool usedMove = false;
+                while (!usedMove)
+                {
+                    player.PlayerMove(player , enemy, usedMove);
+                }
 
                 enemy.Weapon.AttackPattern(enemy, player);
            
