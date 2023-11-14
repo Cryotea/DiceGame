@@ -16,7 +16,8 @@ public class Player : IFighter
     public (int, IItem) [] ItemList =
     {
        (1, new SmallPotion()),
-       (1, new MediumPotion())
+       (1, new MediumPotion()),
+       (0, new GoldenFonduePizza())
     };
 
 /* 
@@ -41,7 +42,7 @@ ich deine hilfe
     {
         
         Console.WriteLine($"what is {player.Name} doing ");
-        Console.WriteLine($"|1 = Attack |2 = Inventory |3 = {player.Name}'s Stats |");
+        Console.WriteLine($"|1 = Attack |2 = Inventory |3 = {player.Name}'s Stats ");
         string input = Console.ReadLine();
         if (input == "1")
         {
@@ -67,7 +68,7 @@ ich deine hilfe
 
     public void ShowStats()
     {
-        Console.WriteLine($"Name :{Name} \tHP:{Health}/{MaxHealth} \nDMG:{Damage} \tWeapon:{Weapon} \nSpeed:{Speed} \tDefence:{Defence} ");
+        Console.WriteLine($"Name :{Name} \tHP:{Health}/{MaxHealth} \nDMG:{Damage} \t\tWeapon:{Weapon} \nSpeed:{Speed} \tDefence:{Defence} ");
         Console.WriteLine("press enter to go back");
         Console.ReadLine();
     }
