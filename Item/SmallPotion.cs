@@ -11,4 +11,9 @@ public class SmallPotion : IItem
         user.Health += Health;
         if (user.Health > user.MaxHealth) user.Health = user.MaxHealth;
     }
+
+    public override string ToString()
+    {
+        return "Small Potion";
+    }
 }
