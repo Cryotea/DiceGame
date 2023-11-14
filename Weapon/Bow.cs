@@ -19,4 +19,9 @@ public class Bow : IWeapon
         Console.WriteLine($"{attacker.Name} rolled a {dice} {(isCrit ? "and got a CriticalHit " : "")}and attacked {defender.Name} for {(((attacker.Speed + dice )* attacker.Damage) * critMultiplier) / defender.Defence} Damage. {defender.Name} has {defender.Health} Hp left");
         
     }
+
+    public override string ToString()
+    {
+        return "Bow";
+    }
 }

@@ -13,4 +13,8 @@ public class IronSword: IWeapon
         Console.WriteLine($"{attacker.Name} rolled a {dice1} and a {dice2} and attacked {defender.Name} for {(dice1 + dice2) * attacker.Damage / defender.Defence} Damage. {defender.Name} has {defender.Health} HP left");
         
     }
+    public override string ToString()
+    {
+        return "IronSword";
+    }
 }
