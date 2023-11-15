@@ -13,7 +13,7 @@ public class Player : IFighter
     public IWeapon Weapon {get; set;} = new CopperShortSword();
     public double MaxHealth {get; set;} = 20;
 
-    public (int, IItem) [] ItemList =
+    public (int, IItem)[] ItemList =
     {
        (1, new SmallPotion()),
        (1, new MediumPotion()),
@@ -29,12 +29,30 @@ ich deine hilfe
 */
     public void OpenInventory()
     {
-        foreach (var Items in ItemList)
+        var notEmptyItems = ItemList.Where(item => item.Item1 > 0).ToList();
+        foreach (var Items in notEmptyItems)
         {
             Console.WriteLine($"|{Items.Item2} x {Items.Item1} |");
         }
         Console.WriteLine("press X to go back");
         string input = Console.ReadLine();
+        
+        if (input != null && input.ToLower() == "x") return;
+
+        if (int.TryParse(input, out int parsedInput))
+        {
+            notEmptyItems[parsedInput-1].Item2.UseItem(this);
+            var usedItem = notEmptyItems[parsedInput-1];
+            int itemNumber = Array.IndexOf(ItemList, usedItem);
+            ItemList[itemNumber].Item1--;
+        }
+
+        else 
+        {
+            Console.WriteLine("Invalid Input");
+            OpenInventory();
+        }
+        
         
     }
 
