@@ -9,6 +9,8 @@ class Program
     {
         var random = new Random();
 
+        var loot = new Loot();
+
         double dice = random.Next(1,7);
 
         var player = new Player();
@@ -52,6 +54,7 @@ class Program
                 }
             }
             enemy.GetStats(player);
+            loot.GetLoot(player , enemy);
         }
 
         if (hasFainted)
