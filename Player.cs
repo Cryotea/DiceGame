@@ -20,13 +20,13 @@ public class Player : IFighter
        (0, new GoldenFonduePizza())
     };
 
-/* 
-wurde hier gerne die inventory numbers zum auswahlen nicht hard coden
-sodass items nicht angezeigt werden wenn man 0 von ihnen hat, meine
-idee ware die in einen temporare arry zu tun wenn sie mehr als 0 items
-davon habe jedoch weiss ich nicht wie oder ob das geht dabei brauche 
-ich deine hilfe
-*/
+    public (bool, IWeapon)[] WeaponList =
+    {
+        (true, new NoWeapon()),
+        (true, new CopperShortSword()),
+        (false, new IronSword()),
+        (false, new Bow())
+    };
     public void OpenInventory()
     {
         var notEmptyItems = ItemList.Where(item => item.Item1 > 0).ToList();
@@ -34,10 +34,12 @@ ich deine hilfe
         {
             Console.WriteLine($"|{Items.Item2} x {Items.Item1} |");
         }
-        Console.WriteLine("press X to go back");
+        Console.WriteLine("press X to go back\n press E to equip a different Weapon");
         string input = Console.ReadLine();
         
         if (input != null && input.ToLower() == "x") return;
+
+        if (input != null && input.ToLower() == "e")OpenWeaponInventory();
 
         if (int.TryParse(input, out int parsedInput))
         {
@@ -45,6 +47,7 @@ ich deine hilfe
             var usedItem = notEmptyItems[parsedInput-1];
             int itemNumber = Array.IndexOf(ItemList, usedItem);
             ItemList[itemNumber].Item1--;
+            Console.WriteLine($"{this.Name} used {notEmptyItems[parsedInput-1].Item2}");
         }
 
         else 
@@ -56,6 +59,31 @@ ich deine hilfe
         
     }
 
+    public void OpenWeaponInventory()
+    {
+        var ownedWeapons = WeaponList.Where(weapon => weapon.Item1 == true).ToList();
+        foreach (var weapon in ownedWeapons)
+        {
+            Console.WriteLine($"|{weapon.Item2} |");
+        }
+        Console.WriteLine("press x to go back");
+        string input = Console.ReadLine();
+
+        if (input != null && input.ToLower() == "x") return;
+
+        if (int.TryParse(input, out int parsedInput))
+        {
+            Weapon = ownedWeapons[parsedInput-1].Item2;
+            Console.WriteLine($"{this.Name} equiped {ownedWeapons[parsedInput-1].Item2}");
+           
+        }
+        
+        else 
+        {
+            Console.WriteLine("Invalid Input");
+            OpenWeaponInventory();
+        }
+    }
     public bool PlayerMove(Player player, IFighter enemy, bool usedMove)
     {
         
