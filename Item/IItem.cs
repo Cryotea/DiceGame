@@ -4,6 +4,6 @@ using diceGame;
 
 public interface IItem
 {
-    public void UseItem(IFighter user);
+    public void UseItem(Player user);
     
 }
