@@ -20,8 +20,11 @@ public class IronSword: IWeapon
     }
     public void Loot(Player player)
     {
+        if (player.Inventory.IronSword.Item1 == 0)
+        {
         player.Inventory.IronSword.Item1 = 1;
         Console.WriteLine($"{player.Name} got a IronSword");
+        }
     }
     public override string ToString()
     {
