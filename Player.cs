@@ -13,77 +13,8 @@ public class Player : IFighter
     public IWeapon Weapon {get; set;} = new CopperShortSword();
     public double MaxHealth {get; set;} = 20;
 
-    public (int, IItem)[] ItemList =
-    {
-       (1, new SmallPotion()),
-       (1, new MediumPotion()),
-       (0, new GoldenFonduePizza())
-    };
+    public Inventory Inventory {get; set;} = new Inventory(); 
 
-    public (bool, IWeapon)[] WeaponList =
-    {
-        (true, new NoWeapon()),
-        (true, new CopperShortSword()),
-        (false, new IronSword()),
-        (false, new Bow())
-    };
-    public void OpenInventory()
-    {
-        var notEmptyItems = ItemList.Where(item => item.Item1 > 0).ToList();
-        foreach (var Items in notEmptyItems)
-        {
-            Console.WriteLine($"|{Items.Item2} x {Items.Item1} |");
-        }
-        Console.WriteLine("press X to go back\n press E to equip a different Weapon");
-        string input = Console.ReadLine();
-        
-        if (input != null && input.ToLower() == "x") return;
-
-        if (input != null && input.ToLower() == "e")OpenWeaponInventory();
-
-        if (int.TryParse(input, out int parsedInput))
-        {
-            notEmptyItems[parsedInput-1].Item2.UseItem(this);
-            var usedItem = notEmptyItems[parsedInput-1];
-            int itemNumber = Array.IndexOf(ItemList, usedItem);
-            ItemList[itemNumber].Item1--;
-            Console.WriteLine($"{this.Name} used {notEmptyItems[parsedInput-1].Item2}");
-        }
-
-        else 
-        {
-            Console.WriteLine("Invalid Input");
-            OpenInventory();
-        }
-        
-        
-    }
-
-    public void OpenWeaponInventory()
-    {
-        var ownedWeapons = WeaponList.Where(weapon => weapon.Item1 == true).ToList();
-        foreach (var weapon in ownedWeapons)
-        {
-            Console.WriteLine($"|{weapon.Item2} |");
-        }
-        Console.WriteLine("press x to go back");
-        string input = Console.ReadLine();
-
-        if (input != null && input.ToLower() == "x") return;
-
-        if (int.TryParse(input, out int parsedInput))
-        {
-            Weapon = ownedWeapons[parsedInput-1].Item2;
-            Console.WriteLine($"{this.Name} equiped {ownedWeapons[parsedInput-1].Item2}");
-           
-        }
-        
-        else 
-        {
-            Console.WriteLine("Invalid Input");
-            OpenWeaponInventory();
-        }
-    }
     public bool PlayerMove(Player player, IFighter enemy, bool usedMove)
     {
         
@@ -98,7 +29,7 @@ public class Player : IFighter
         }
         if (input == "2")
         {
-            player.OpenInventory();
+            Inventory.OpenInventory(this);
             usedMove = false;
             return usedMove;
         }
