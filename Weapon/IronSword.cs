@@ -13,6 +13,16 @@ public class IronSword: IWeapon
         Console.WriteLine($"{attacker.Name} rolled a {dice1} and a {dice2} and attacked {defender.Name} for {(dice1 + dice2) * attacker.Damage / defender.Defence} Damage. {defender.Name} has {defender.Health} HP left");
         
     }
+    public void EquipWeapon(Player player)
+    {
+        player.Weapon = new IronSword();
+        Console.WriteLine($"{player.Name} equiped a Iron Sword");
+    }
+    public void Loot(Player player)
+    {
+        player.Inventory.IronSword.Item1 = 1;
+        Console.WriteLine($"{player.Name} got a IronSword");
+    }
     public override string ToString()
     {
         return "IronSword";

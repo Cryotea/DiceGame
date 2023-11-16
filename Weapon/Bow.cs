@@ -2,7 +2,7 @@ namespace diceGame.Weapon;
 
 public class Bow : IWeapon
 {
-     public void AttackPattern(IFighter attacker, IFighter defender)
+    public void AttackPattern(IFighter attacker, IFighter defender)
     {
         var random = new Random();
         double dice = random.Next(1,11);
@@ -20,6 +20,21 @@ public class Bow : IWeapon
         
     }
 
+    public void EquipWeapon(Player player)
+    {
+        player.Weapon = new Bow();
+        Console.WriteLine($"{player.Name} equiped a Bow");
+    }
+
+    public void Loot(Player player)
+    {
+        if (player.Inventory.Bow.Item1 == 0)
+        {
+        player.Inventory.Bow.Item1 = 1;
+        Console.WriteLine($"{player.Name} got a Bow");
+        }
+    }
+    
     public override string ToString()
     {
         return "Bow";
