@@ -10,6 +10,7 @@ public class EnemyKnight : IEnemy
     public double Defence {get; set;} = 1;
     public IWeapon Weapon {get; set;} = new IronSword ();
     public double MaxHealth{get; set;} = 10;
+    public int EXP {get; set;} = 5;
     public object Clone()
     {
         return new EnemyKnight()
@@ -25,7 +26,15 @@ public class EnemyKnight : IEnemy
     }
      public void GetStats(Player player)
     {
+        double OldStat = player.Damage;
         player.Damage += 0.2;
+        Console.WriteLine($"{player.Name} got a stat up!\n Damage : {OldStat} => {player.Damage}!");
+    }
+    public void GetExp(Player player)
+    {
+        player.EXP += EXP;
+        Console.WriteLine($"{player.Name} got {EXP} EXP!");
+        player.LevelUp();
     }
 }
 

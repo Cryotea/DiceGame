@@ -12,6 +12,7 @@ public class EnemySlime : IEnemy
     public double Defence {get; set;} = 1.2;
     public IWeapon Weapon {get; set;} = new NoWeapon ();
     public double MaxHealth {get; set;} = 15 ;
+    public int EXP {get; set;} = 3;
     public object Clone()
     {
         return new EnemySlime()
@@ -28,6 +29,15 @@ public class EnemySlime : IEnemy
 
     public void GetStats(Player player)
     {
+        double OldStat = player.MaxHealth;
         player.MaxHealth += 5;
+        Console.WriteLine($"{player.Name} got a stat up!\n Health : {OldStat} => {player.MaxHealth}!");
+    }
+
+    public void GetExp(Player player)
+    {
+        player.EXP += EXP;
+        Console.WriteLine($"{player.Name} got {EXP} EXP!");
+        player.LevelUp();
     }
 }
