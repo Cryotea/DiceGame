@@ -55,6 +55,7 @@ class Program
             }
             enemy.GetStats(player);
             loot.GetLoot(player , enemy);
+            enemy.GetExp(player);
         }
 
         if (hasFainted)
