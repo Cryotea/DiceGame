@@ -1,8 +1,9 @@
-namespace diceGame.Enemy;
 using diceGame.Weapon;
 using diceGame;
 using System.Dynamic;
+using diceGame.Effects;
 
+namespace diceGame.Enemy;
 public class EnemyArcher : IEnemy
 {
     public string Name {get; set;} = "Archer"; 
@@ -13,6 +14,7 @@ public class EnemyArcher : IEnemy
     public IWeapon Weapon {get; set;} = new Bow ();
     public double MaxHealth {get; set;} = 10 ;
     public int EXP {get; set;} = 8;
+    public Effect Effect {get; set;} = new Effect();
     public object Clone()
     {
         return new EnemyArcher()

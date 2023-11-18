@@ -1,4 +1,5 @@
 using diceGame.Weapon;
+using diceGame.Effects;
 
 namespace diceGame;
 
@@ -11,5 +12,5 @@ public interface IFighter
     public double Defence {get; set;} 
     public IWeapon Weapon {get; set;}
     public double MaxHealth {get; set;}
-   
+    public Effect Effect{get; set;}
 }

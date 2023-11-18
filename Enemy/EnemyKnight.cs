@@ -1,5 +1,7 @@
 using diceGame.Weapon;
 using diceGame;
+using diceGame.Effects;
+
 namespace diceGame.Enemy;
 public class EnemyKnight : IEnemy
 {
@@ -11,6 +13,7 @@ public class EnemyKnight : IEnemy
     public IWeapon Weapon {get; set;} = new IronSword ();
     public double MaxHealth{get; set;} = 10;
     public int EXP {get; set;} = 5;
+    public Effect Effect {get; set;} = new Effect();
     public object Clone()
     {
         return new EnemyKnight()

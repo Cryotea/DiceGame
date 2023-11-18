@@ -1,7 +1,8 @@
-namespace diceGame.Enemy;
 using diceGame.Weapon;
 using diceGame;
+using diceGame.Effects;
 
+namespace diceGame.Enemy;
 
 public class EnemySlime : IEnemy
 {
@@ -13,6 +14,7 @@ public class EnemySlime : IEnemy
     public IWeapon Weapon {get; set;} = new NoWeapon ();
     public double MaxHealth {get; set;} = 15 ;
     public int EXP {get; set;} = 3;
+    public Effect Effect {get; set;} = new Effect();
     public object Clone()
     {
         return new EnemySlime()
