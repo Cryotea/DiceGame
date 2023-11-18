@@ -3,6 +3,8 @@ namespace diceGame;
 using diceGame.Item;
 using diceGame.Weapon;
 using diceGame.Enemy;
+using diceGame.Effects;
+
 public class Player : IFighter
 {
     public string Name {get; set;} = "Player";
@@ -14,7 +16,7 @@ public class Player : IFighter
     public double MaxHealth {get; set;} = 20;
     public double EXP {get; set;} = 0;
     public double Level {get; set;} = 0;
-
+    public Effect Effect {get; set;} = new Effect();
     public Inventory Inventory {get; set;} = new Inventory(); 
 
     public bool PlayerMove(Player player, IFighter enemy, bool usedMove)
@@ -67,6 +69,7 @@ public class Player : IFighter
                 ("Defence", Defence),
                 
             };
+            
             Level++;
             EXP -= 10;
             MaxHealth = MaxHealth + (MaxHealth * 0.1);
@@ -81,13 +84,11 @@ public class Player : IFighter
                 ("Damage", Damage),
                 ("Speed", Speed),
                 ("Defence", Defence),
-                
-
-
-                
             };
+
             Console.WriteLine($"{Name} got a Level Up");
             Console.WriteLine($" Level {OldStats[0].Item2} => {NewStats[0].Item2}");
+
             int count = 1;
             while(count < 5)
             {   
