@@ -15,7 +15,7 @@ public class Loot
         int RareLootChance = random.Next(1,5);
         int WeaponDropChance = random.Next(1,4);
         
-
+        //use switchcases instead of if
         if(Loot == 1)
         {
             player.Inventory.SmallPotion.Item1 ++;
