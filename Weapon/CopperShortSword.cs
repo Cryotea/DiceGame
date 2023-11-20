@@ -2,7 +2,7 @@ namespace diceGame.Weapon;
 
 public class CopperShortSword : IWeapon
 {
-     public void AttackPattern(IFighter attacker, IFighter defender)
+    public void AttackPattern(IFighter attacker, IFighter defender)
     {
         var random = new Random();
         double dice = random.Next(1,7);
