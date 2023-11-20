@@ -8,6 +8,7 @@ public class Inventory
     // normal Items
     public (int, IItem) SmallPotion = (1, new SmallPotion());
     public (int, IItem) MediumPotion = (1, new MediumPotion());
+    public (int, IItem) PotionOfRegenaration = (1, new PotionOfRegenaration());
 
     // rare Items
     public (int, IItem) GoldenFonduePizza = (0, new GoldenFonduePizza());
@@ -17,6 +18,7 @@ public class Inventory
     public (int, IWeapon) CopperShortSword = (1, new CopperShortSword());
     public (int, IWeapon) IronSword = (0, new IronSword());
     public (int, IWeapon) Bow = (0, new Bow()); 
+    public (int, IWeapon) PoisenCrossbow = (0, new PoisenCrossbow());
 
     public void OpenInventory(Player player)
     {
@@ -27,7 +29,8 @@ public class Inventory
         {
             SmallPotion,
             MediumPotion,
-            GoldenFonduePizza
+            GoldenFonduePizza,
+            PotionOfRegenaration
         };
 
          AllWeapons = new (int, IWeapon)[]
@@ -35,7 +38,8 @@ public class Inventory
             NoWeapon,
             CopperShortSword,
             IronSword,
-            Bow
+            Bow,
+            PoisenCrossbow
         };
 
         var notEmptyItems = AllItems.Where(item => item.Item1 > 0).ToList();
