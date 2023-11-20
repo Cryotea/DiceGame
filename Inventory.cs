@@ -48,8 +48,8 @@ public class Inventory
         
         if (input != null && input.ToLower() == "x") return;
 
-       if (input != null && input.ToLower() == "e")
-       {
+        if (input != null && input.ToLower() == "e")
+        {
             var ownedWeapons = AllWeapons.Where(Weapon => Weapon.Item1 >0).ToList();
             foreach (var Weapon in ownedWeapons)
             {
