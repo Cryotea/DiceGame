@@ -36,4 +36,10 @@ public class Effect
             Poisen.Item2--;
         }
     }
+
+    public void Info()
+    {
+        if (Regenaration.Item2 > 0) Console.WriteLine($"Regenaration Lvl:{Regenaration.Item1}, Duration:{Regenaration.Item2}");
+        if (Poisen.Item2 > 0) Console.WriteLine($"Poisen Lvl:{Poisen.Item1}, Duration:{Poisen.Item2}");
+    }
 }
