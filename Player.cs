@@ -25,8 +25,11 @@ public class Player : IFighter
         Console.WriteLine($"what is {player.Name} doing ");
         Console.WriteLine($"|1 = Attack |2 = Inventory |3 = {player.Name}'s Stats ");
         string input = Console.ReadLine();
+        // switch instead of if
         if (input == "1")
         {
+            Effect.GetBuffed(this);
+            Effect.GetDebuffed(this);
             player.Weapon.AttackPattern(player, enemy);
             usedMove = true;
             return usedMove;
@@ -49,7 +52,8 @@ public class Player : IFighter
 
     public void ShowStats()
     {
-        Console.WriteLine($"Name :{Name} \tHP:{Health}/{MaxHealth} \nDMG:{Damage} \t\tWeapon:{Weapon} \nSpeed:{Speed} \tDefence:{Defence} ");
+        Console.WriteLine($"Name :{Name}\tLvl:{Level} \tHP:{Health}/{MaxHealth} \nDMG:{Damage} \t\tWeapon:{Weapon} \nSpeed:{Speed} \tDefence:{Defence} ");
+        this.Effect.Info();
         Console.WriteLine("press enter to go back");
         Console.ReadLine();
     }
@@ -86,13 +90,13 @@ public class Player : IFighter
                 ("Defence", Defence),
             };
 
-            Console.WriteLine($"{Name} got a Level Up");
+            Console.WriteLine($"{Name} got a Level Up!");
             Console.WriteLine($" Level {OldStats[0].Item2} => {NewStats[0].Item2}");
 
             int count = 1;
             while(count < 5)
             {   
-                Console.WriteLine($"{OldStats[count].Item1} : {OldStats[count].Item2} => {NewStats[count].Item2}!");
+                Console.WriteLine($"{OldStats[count].Item1} : {OldStats[count].Item2} => {NewStats[count].Item2}");
                 count++;
             }
     
