@@ -9,7 +9,8 @@ public class Fight
     {
        (2, new EnemySlime()),
        (2, new EnemyKnight()),
-       (2, new EnemyArcher())
+       (2, new EnemyArcher()),
+       (2, new EnemySkeletonArcher()) 
 
     };
     public static IEnemy GetEnemy()
