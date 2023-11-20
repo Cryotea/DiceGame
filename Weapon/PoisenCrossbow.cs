@@ -25,8 +25,8 @@ public class PoisenCrossbow : IWeapon
             defender.Effect.Poisen.Item1 = poisenLevel;
             defender.Effect.Poisen.Item2 += poisenDuration;
             
-            defender.Health = defender.Health - (Strength / 0.1) * dice + dice;
-            double Damage = (Strength / 0.1) * dice + dice;
+            defender.Health = defender.Health - (Strength * 0.1) * dice + dice;
+            double Damage = (Strength * 0.1) * dice + dice;
             Console.WriteLine($"{attacker.Name} rolled a {dice} and attacked {defender.Name} for {Damage}!");
         }
         Turn++;
