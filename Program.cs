@@ -38,7 +38,9 @@ class Program
                 {
                     usedMove = player.PlayerMove(player , enemy, usedMove);
                 }
-
+                
+                enemy.Effect.GetBuffed(enemy);
+                enemy.Effect.GetDebuffed(enemy);
                 enemy.Weapon.AttackPattern(enemy, player);
            
                 if (player.Health <= 0)
