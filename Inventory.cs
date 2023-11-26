@@ -102,8 +102,9 @@ public class Inventory
         }
     }
 
-    public void GainItem(string itemId)
+    public void GainItem(string itemId, int amount)
     {
-        
+        var item = AllItems.FirstOrDefault(item => item.Id == itemId);
+        item.Amount+= amount;
     }
 }
