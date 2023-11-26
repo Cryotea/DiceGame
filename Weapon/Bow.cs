@@ -1,7 +1,9 @@
 namespace diceGame.Weapon;
 
 public class Bow : IWeapon
-{
+{   
+    public string Id {get; set;} = "Bow";
+    public int Amount {get; set;} 
     public void AttackPattern(IFighter attacker, IFighter defender)
     {
         var random = new Random();
@@ -28,9 +30,9 @@ public class Bow : IWeapon
 
     public void Loot(Player player)
     {
-        if (player.Inventory.Bow.Item1 == 0)
+        if (player.Inventory.Bow.Amount == 0)
         {
-        player.Inventory.Bow.Item1 = 1;
+        player.Inventory.Bow.Amount = 1;
         Console.WriteLine($"{player.Name} got a Bow");
         }
     }

@@ -2,6 +2,8 @@ namespace diceGame.Weapon;
 
 public class NoWeapon : IWeapon
 {
+    public string Id {get; set;} = "NoWeapon";
+    public int Amount {get; set;} 
     public void AttackPattern(IFighter attacker, IFighter defender)
     {
         var random = new Random();
@@ -20,9 +22,9 @@ public class NoWeapon : IWeapon
     
     public void Loot(Player player)
     {
-        if (player.Inventory.NoWeapon.Item1 == 0)
+        if (player.Inventory.NoWeapon.Amount == 0)
         {
-        player.Inventory.Bow.Item1 = 1;
+        player.Inventory.Bow.Amount = 1;
         //Console.WriteLine($"{player.Name} got a NoWeapon");
         }
     }

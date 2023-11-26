@@ -4,12 +4,13 @@ using diceGame;
 
 public class GoldenFonduePizza : IItem
 {
-
+    public string Id {get; set;} = "GoldenFonduePizza";
+    public int Amount {get; set;} 
     private double Health = 35;
     public void UseItem(Player user)
     {
         user.Health += Health;
-        user.Inventory.GoldenFonduePizza.Item1--;
+        Amount--;
     }
 
     public override string ToString()

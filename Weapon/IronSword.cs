@@ -2,6 +2,8 @@ namespace diceGame.Weapon;
 
 public class IronSword: IWeapon
 {
+    public string Id {get; set;} = "IronSword";
+    public int Amount {get; set;} 
      public void AttackPattern(IFighter attacker, IFighter defender)
     {
         var random = new Random();
@@ -20,9 +22,9 @@ public class IronSword: IWeapon
     }
     public void Loot(Player player)
     {
-        if (player.Inventory.IronSword.Item1 == 0)
+        if (player.Inventory.IronSword.Amount == 0)
         {
-        player.Inventory.IronSword.Item1 = 1;
+        player.Inventory.IronSword.Amount = 1;
         Console.WriteLine($"{player.Name} got a IronSword");
         }
     }

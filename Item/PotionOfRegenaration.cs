@@ -2,6 +2,8 @@ namespace diceGame.Item;
 
 public class PotionOfRegenaration : IItem
 {
+    public string Id {get; set;} = "PotionOfRegenaration";
+    public int Amount {get; set;} 
     private int RegenarationLevel = 2;
     private int RegenarationDuration = 3;
 
@@ -9,7 +11,7 @@ public class PotionOfRegenaration : IItem
     {
         user.Effect.Regenaration.Item1 = RegenarationLevel;
         user.Effect.Regenaration.Item2 = RegenarationDuration;
-        user.Inventory.PotionOfRegenaration.Item1--;
+        Amount--;
         Console.WriteLine($"{user.Name} has Regenaration for {RegenarationDuration} turns!");
     }
 

@@ -5,6 +5,8 @@ namespace diceGame.Weapon;
 
 public class PoisenCrossbow : IWeapon
 {
+    public string Id {get; set;} = "PoisenCrossbow";
+    public int Amount {get; set;} 
     private int Turn = 1;
     private double Strength = 0;
     public void AttackPattern(IFighter attacker, IFighter defender)
@@ -40,9 +42,9 @@ public class PoisenCrossbow : IWeapon
 
     public void Loot(Player player)
     {
-        if(player.Inventory.PoisenCrossbow.Item1 == 0)
+        if(player.Inventory.PoisenCrossbow.Amount == 0)
         {
-            player.Inventory.PoisenCrossbow.Item1 = 1;
+            player.Inventory.PoisenCrossbow.Amount = 1;
             Console.WriteLine($"{player.Name} got a PoisenCrossbow");
         }
     }

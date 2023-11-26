@@ -4,13 +4,14 @@ using diceGame;
 
 public class SmallPotion : IItem
 {
-
+    public string Id {get; set;} = "SmallPotion";
+    public int Amount {get; set;} 
     private double Health = 15;
     public void UseItem(Player user)
     {
         user.Health += Health;
         if (user.Health > user.MaxHealth) user.Health = user.MaxHealth;
-        user.Inventory.SmallPotion.Item1--;
+        Amount--;
     }
 
     public override string ToString()
