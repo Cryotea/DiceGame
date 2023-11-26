@@ -12,5 +12,7 @@ public interface IFighter
     public double Defence {get; set;} 
     public IWeapon Weapon {get; set;}
     public double MaxHealth {get; set;}
-    public Effect Effect{get; set;}
+    public int EXP {get; set;}
+    public Effect Effect {get; set;}
+    public int Money {get; set;}
 }

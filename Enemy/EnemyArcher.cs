@@ -15,6 +15,7 @@ public class EnemyArcher : IEnemy
     public double MaxHealth {get; set;} = 10 ;
     public int EXP {get; set;} = 8;
     public Effect Effect {get; set;} = new Effect();
+    public int Money {get; set;} = 10;
     public object Clone()
     {
         return new EnemyArcher()
@@ -41,5 +42,11 @@ public class EnemyArcher : IEnemy
         player.EXP += EXP;
         Console.WriteLine($"{player.Name} got {EXP} EXP!");
         player.LevelUp();
+    }
+
+    public void GetMoney(Player player)
+    {
+        player.Money += Money;
+        Console.WriteLine($"{player.Name} got {Money}$ !");
     }
 }
