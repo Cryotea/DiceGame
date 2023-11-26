@@ -14,10 +14,11 @@ public class Player : IFighter
     public double Defence {get; set;} = 1;
     public IWeapon Weapon {get; set;} = new CopperShortSword();
     public double MaxHealth {get; set;} = 20;
-    public double EXP {get; set;} = 0;
+    public int EXP {get; set;} = 0;
     public double Level {get; set;} = 0;
     public Effect Effect {get; set;} = new Effect();
     public Inventory Inventory {get; set;} = new Inventory(); 
+    public int Money {get; set;} = 10;
 
     public bool PlayerMove(Player player, IFighter enemy, bool usedMove)
     {
