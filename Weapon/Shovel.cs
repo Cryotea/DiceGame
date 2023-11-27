@@ -19,15 +19,6 @@ public class Shovel: IWeapon
         player.Weapon = new Shovel();
         Console.WriteLine($"{player.Name} equiped a Shovel");
     }
-
-    public void Loot(Player player)
-    {
-        if (player.Inventory.CopperShortSword.Amount == 0)
-        {
-        player.Inventory.CopperShortSword.Amount = 1;
-        Console.WriteLine($"{player.Name} got a Shovel");
-        }
-    }
     public override string ToString()
     {
         return "Shovel";

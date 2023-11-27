@@ -6,5 +6,4 @@ public interface IWeapon
         public string Id {get; set;}
         public void AttackPattern(IFighter attacker, IFighter defender);
         public void EquipWeapon(Player player);
-        public void Loot(Player player);
     }

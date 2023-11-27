@@ -18,15 +18,6 @@ public class CopperShortSword : IWeapon
         player.Weapon = new CopperShortSword();
         Console.WriteLine($"{player.Name} equiped a CopperShortSword");
     }
-
-    public void Loot(Player player)
-    {
-        if (player.Inventory.CopperShortSword.Amount == 0)
-        {
-        player.Inventory.CopperShortSword.Amount = 1;
-        Console.WriteLine($"{player.Name} got a CopperShortSword");
-        }
-    }
     public override string ToString()
     {
         return "CopperShortSword";

@@ -19,15 +19,6 @@ public class NoWeapon : IWeapon
         Console.WriteLine($"{player.Name} deequiped their weapon");
 
     }
-    
-    public void Loot(Player player)
-    {
-        if (player.Inventory.NoWeapon.Amount == 0)
-        {
-        player.Inventory.Bow.Amount = 1;
-        //Console.WriteLine($"{player.Name} got a NoWeapon");
-        }
-    }
     public override string ToString()
     {
         return "no Weapon";

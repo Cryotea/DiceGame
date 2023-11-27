@@ -39,15 +39,6 @@ public class PoisenCrossbow : IWeapon
         player.Weapon = new PoisenCrossbow();
         Console.WriteLine($"{player.Name} equiped a PoisenCrossbow");
     }
-
-    public void Loot(Player player)
-    {
-        if(player.Inventory.PoisenCrossbow.Amount == 0)
-        {
-            player.Inventory.PoisenCrossbow.Amount = 1;
-            Console.WriteLine($"{player.Name} got a PoisenCrossbow");
-        }
-    }
     public override string ToString()
     {
         return "PoisenCrossbow";

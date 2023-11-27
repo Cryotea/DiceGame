@@ -26,17 +26,7 @@ public class Bow : IWeapon
     {
         player.Weapon = new Bow();
         Console.WriteLine($"{player.Name} equiped a Bow");
-    }
-
-    public void Loot(Player player)
-    {
-        if (player.Inventory.Bow.Amount == 0)
-        {
-        player.Inventory.Bow.Amount = 1;
-        Console.WriteLine($"{player.Name} got a Bow");
-        }
-    }
-    
+    }    
     public override string ToString()
     {
         return "Bow";
