@@ -15,6 +15,8 @@ class Program
 
         var player = new Player();
 
+        player.Inventory.GainStartEquip();
+
         bool hasFainted = false; 
 
         Console.WriteLine("Wellcome to DiceGame \nPlease input youre Name ");
