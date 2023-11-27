@@ -13,11 +13,6 @@ public class CopperShortSword : IWeapon
         Console.WriteLine($"{attacker.Name} rolled a {dice} and attacked {defender.Name} for {(dice + attacker.Speed)* attacker.Damage / defender.Defence} Damage. {defender.Name} has {defender.Health} HP left");
         
     }
-    public void EquipWeapon(Player player)
-    {
-        player.Weapon = new CopperShortSword();
-        Console.WriteLine($"{player.Name} equiped a CopperShortSword");
-    }
     public override string ToString()
     {
         return "CopperShortSword";

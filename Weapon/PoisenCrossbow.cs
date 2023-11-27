@@ -34,11 +34,6 @@ public class PoisenCrossbow : IWeapon
         Turn++;
         if (Turn == 3)Turn = 1;
     }
-    public void EquipWeapon(Player player)
-    {
-        player.Weapon = new PoisenCrossbow();
-        Console.WriteLine($"{player.Name} equiped a PoisenCrossbow");
-    }
     public override string ToString()
     {
         return "PoisenCrossbow";

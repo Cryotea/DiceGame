@@ -20,13 +20,7 @@ public class Bow : IWeapon
         defender.Health = defender.Health - (((attacker.Speed + dice )* attacker.Damage) * critMultiplier) / defender.Defence;
         Console.WriteLine($"{attacker.Name} rolled a {dice} {(isCrit ? "and got a CriticalHit " : "")}and attacked {defender.Name} for {(((attacker.Speed + dice )* attacker.Damage) * critMultiplier) / defender.Defence} Damage. {defender.Name} has {defender.Health} Hp left");
         
-    }
-
-    public void EquipWeapon(Player player)
-    {
-        player.Weapon = new Bow();
-        Console.WriteLine($"{player.Name} equiped a Bow");
-    }    
+    }   
     public override string ToString()
     {
         return "Bow";

@@ -14,11 +14,6 @@ public class Shovel: IWeapon
         Console.WriteLine($"{attacker.Name} rolled a {dice} and a {dice2} and digged a hole, and kicked {defender.Name} for {dice2 * attacker.Damage / defender.Defence}. {defender.Name} fell in the hole and took {dice +(defender.Damage * 0.1)} fall damage!");
         
     }
-    public void EquipWeapon(Player player)
-    {
-        player.Weapon = new Shovel();
-        Console.WriteLine($"{player.Name} equiped a Shovel");
-    }
     public override string ToString()
     {
         return "Shovel";

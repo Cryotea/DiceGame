@@ -13,12 +13,6 @@ public class NoWeapon : IWeapon
         Console.WriteLine($"{attacker.Name} rolled a {dice} and attacked {defender.Name} for {dice * attacker.Damage / defender.Defence} Damage. {defender.Name} has {defender.Health} HP left");
         
     }
-    public void EquipWeapon(Player player)
-    {
-        player.Weapon = new NoWeapon();
-        Console.WriteLine($"{player.Name} deequiped their weapon");
-
-    }
     public override string ToString()
     {
         return "no Weapon";
