@@ -40,7 +40,8 @@ public class Loot
 
         if (WeaponDropChance == 1)
         {
-            enemy.Weapon.Loot(player);
+            player.Inventory.GainWeapon(enemy.Weapon.Id);
+            Console.WriteLine($"{player.Name} found a {enemy.Weapon}!");
         }
     }
 
