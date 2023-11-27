@@ -78,7 +78,9 @@ public class Inventory
 
             if (int.TryParse(weaponinput, out int parsedInput2))
             {
-                ownedWeapons[parsedInput2-1].EquipWeapon(player);
+                var weapon = AllWeapons.FirstOrDefault(weapon => weapon.Id == ownedWeapons[parsedInput2-1].Id);
+                player.Weapon = weapon;
+                Console.WriteLine($"{player.Name} equiped {weapon}!");
                 OpenInventory(player);
             }
 
