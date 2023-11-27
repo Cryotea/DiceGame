@@ -107,4 +107,10 @@ public class Inventory
         var item = AllItems.FirstOrDefault(item => item.Id == itemId);
         item.Amount+= amount;
     }
+
+    public void GainWeapon(string itemId)
+    {
+        var weapon = AllWeapons.FirstOrDefault(weapon => weapon.Id == itemId);
+        weapon.Amount++;
+    }
 }
