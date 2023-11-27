@@ -113,4 +113,15 @@ public class Inventory
         var weapon = AllWeapons.FirstOrDefault(weapon => weapon.Id == itemId);
         weapon.Amount++;
     }
+
+    public void GainStartEquip()
+    {
+        //Items
+        SmallPotion.Amount = 1;
+        MediumPotion.Amount = 1;
+        PotionOfRegenaration.Amount = 1;
+        //Weapons
+        CopperShortSword.Amount = 1;
+        NoWeapon.Amount = 1;
+    }
 }
