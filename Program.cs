@@ -57,9 +57,7 @@ class Program
                     Console.WriteLine($"{player.Name} defeated {enemy.Name}");
                 }
             }
-            enemy.GetStats(player);
             loot.GetLoot(player , enemy);
-            enemy.GetExp(player);
         }
 
         if (hasFainted)
