@@ -16,6 +16,7 @@ public class EnemySkeletonArcher : IEnemy
     public int EXP {get; set;} = 12;
     public Effect Effect {get; set;} = new Effect();
     public int Money {get; set;} = 10;
+    public LootTable LootTable {get; set;} = new LootTable();
     public object Clone()
     {
         return new EnemySkeletonArcher()

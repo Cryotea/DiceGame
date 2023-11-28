@@ -2,6 +2,7 @@ using diceGame.Weapon;
 using diceGame;
 using System.Dynamic;
 using diceGame.Effects;
+using diceGame.Item;
 
 namespace diceGame.Enemy;
 public class EnemyArcher : IEnemy
@@ -16,6 +17,7 @@ public class EnemyArcher : IEnemy
     public int EXP {get; set;} = 8;
     public Effect Effect {get; set;} = new Effect();
     public int Money {get; set;} = 10;
+    public LootTable LootTable {get; set;} = new LootTable();
     public object Clone()
     {
         return new EnemyArcher()

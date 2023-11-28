@@ -15,6 +15,7 @@ public class EnemyKnight : IEnemy
     public int EXP {get; set;} = 5;
     public Effect Effect {get; set;} = new Effect();
     public int Money {get; set;} = 10;
+    public LootTable LootTable {get; set;} = new LootTable();
     public object Clone()
     {
         return new EnemyKnight()
