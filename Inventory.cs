@@ -1,3 +1,4 @@
+using diceGame.Effects.Debuffs;
 using diceGame.Item;
 using diceGame.Weapon;
 
@@ -5,51 +6,23 @@ namespace diceGame;
 
 public class Inventory
 {
-
-    public IItem[] AllItems 
+    public IItem[] AllItems =
     {
-        get 
-        {
-            return new IItem[]
-            {
-                SmallPotion,
-                MediumPotion,
-                GoldenFonduePizza,
-                PotionOfRegenaration
-            };
-        }
-    }
+        new SmallPotion(),
+        new MediumPotion(),
+        new GoldenFonduePizza(),
+        new PotionOfRegenaration()
 
-    public IWeapon[] AllWeapons
+    }; 
+    public IWeapon[] AllWeapons =
     {
-        get
-        {
-            return new IWeapon[]
-            {
-                NoWeapon,
-                CopperShortSword,
-                IronSword,
-                Bow,
-                PoisenCrossbow,
-                Shovel
-            };
-        }
-    }
-    // normal Items
-    public IItem SmallPotion = new SmallPotion();
-    public IItem MediumPotion = new MediumPotion();
-    public IItem PotionOfRegenaration = new PotionOfRegenaration();
-
-    // rare Items
-    public IItem GoldenFonduePizza = new GoldenFonduePizza();
-
-    // Weapons
-    public IWeapon NoWeapon = new NoWeapon();
-    public IWeapon CopperShortSword = new CopperShortSword();
-    public IWeapon IronSword = new IronSword();
-    public IWeapon Bow = new Bow(); 
-    public IWeapon PoisenCrossbow = new PoisenCrossbow();
-    public IWeapon Shovel = new Shovel();
+        new NoWeapon(),
+        new CopperShortSword(),
+        new IronSword(),
+        new Bow(),
+        new PoisenCrossbow(),
+        new Shovel()
+    };
 
     public void OpenInventory(Player player)
     {
@@ -119,11 +92,11 @@ public class Inventory
     public void GainStartEquip()
     {
         //Items
-        SmallPotion.Amount = 1;
-        MediumPotion.Amount = 1;
-        PotionOfRegenaration.Amount = 1;
+        GainItem("SmallPotion", 1);
+        GainItem("MediumPotion", 1);
+        GainItem("PotionOfRegenaration", 1);
         //Weapons
-        CopperShortSword.Amount = 1;
-        NoWeapon.Amount = 1;
+        GainWeapon("CopperShortSword");
+        GainWeapon("NoWeapon");
     }
 }
