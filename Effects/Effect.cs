@@ -10,6 +10,10 @@ public class Effect
     /// Level, Duration used for <see cref="Buffs.Regenaration">Regenaration</see>
     /// </summary>
     public (int, int) Regenaration = (0, 0);
+    /// <summary>
+    /// Level, Duration used for <see cref="Buffs.Strength">Strength</see>
+    /// </summary>
+    public (int, int) Strength = (0,0);
 
     //Debuffs
     /// <summary>
