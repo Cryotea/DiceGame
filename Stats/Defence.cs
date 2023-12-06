@@ -1,14 +1,19 @@
 namespace diceGame.Stats;
 
-public class Defence
+public class Defence : IStat
 {
     public double MaxDefence;
-    public double Def;
-
 
     public Defence(double maxDefence)
     {
         MaxDefence = maxDefence;
+    }
+
+    public double GetStat(IFighter fighter)
+    {
+        double Defence = MaxDefence;
+
+        return Defence;
     }
 }
 

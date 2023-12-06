@@ -1,14 +1,21 @@
 namespace diceGame.Stats;
 
-public class Health
+public class Health : IStat
 {
     public double MaxHealth;
-    double HealthPoints;
     public double HP;
 
     public Health(double maxHealth)
     {
         MaxHealth = maxHealth;
     }
+    
+    public double GetStat(IFighter fighter)
+    {
+        double Health = HP;
+
+        return Health;
+    }
+    
 }
 
