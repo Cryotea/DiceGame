@@ -8,6 +8,7 @@ public class Health : IStat
     public Health(double maxHealth)
     {
         MaxHealth = maxHealth;
+        HP = maxHealth;
     }
     
     public double GetStat(IFighter fighter)
