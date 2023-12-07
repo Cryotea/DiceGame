@@ -4,16 +4,16 @@ using diceGame.Item;
 using diceGame.Weapon;
 using diceGame.Enemy;
 using diceGame.Effects;
+using diceGame.Stats;
 
 public class Player : IFighter
 {
     public string Name {get; set;} = "Player";
-    public double Health {get; set;} = 20;
-    public double Damage {get; set;} = 1;
-    public double Speed {get; set;} = 1;
-    public double Defence {get; set;} = 1;
+    public Health Health {get; set;} = new Health(20);
+    public Stats.Strength Strength {get; set;} = new Stats.Strength(1);
+    public Speed Speed {get; set;} = new Speed(1);
+    public Defence Defence {get; set;} = new Defence(1);
     public IWeapon Weapon {get; set;} = new CopperShortSword();
-    public double MaxHealth {get; set;} = 20;
     public int EXP {get; set;} = 0;
     public double Level {get; set;} = 0;
     public Effect Effect {get; set;} = new Effect();
@@ -53,7 +53,7 @@ public class Player : IFighter
 
     public void ShowStats()
     {
-        Console.WriteLine($"Name :{Name}\tLvl:{Level} \tHP:{Health}/{MaxHealth} \nDMG:{Damage} \t\tWeapon:{Weapon} \nSpeed:{Speed} \tDefence:{Defence} ");
+        Console.WriteLine($"Name :{Name}\tLvl:{Level} \tHP:{Health.HP}/{Health.MaxHealth} \nDMG:{Strength.MaxStrength} \t\tWeapon:{Weapon} \nSpeed:{Speed.MaxSpeed} \tDefence:{Defence.MaxDefence} ");
         this.Effect.Info();
         Console.WriteLine("press enter to go back");
         Console.ReadLine();
@@ -68,27 +68,27 @@ public class Player : IFighter
             OldStats = new (string, double)[]
             {
                 ("Level", Level),
-                ("MaxHealth", MaxHealth),
-                ("Damage", Damage),
-                ("Speed", Speed),
-                ("Defence", Defence),
+                ("MaxHealth", Health.MaxHealth),
+                ("Damage", Strength.MaxStrength),
+                ("Speed", Speed.MaxSpeed),
+                ("Defence", Defence.MaxDefence),
                 
             };
             
             Level++;
             EXP -= 10;
-            MaxHealth = MaxHealth + (MaxHealth * 0.1);
-            Damage = Damage + (Damage * 0.1);
-            Speed = Speed + (Speed * 0.1);
-            Defence = Defence + (Defence * 0.1);
+            Health.MaxHealth = Health.MaxHealth + (Health.MaxHealth * 0.1);
+            Strength.MaxStrength = Strength.MaxStrength + (Strength.MaxStrength * 0.1);
+            Speed.MaxSpeed = Speed.MaxSpeed + (Speed.MaxSpeed * 0.1);
+            Defence.MaxDefence = Defence.MaxDefence + (Defence.MaxDefence * 0.1);
 
             NewStats = new (string, double)[]
             {
                 ("Level", Level),
-                ("MaxHealth", MaxHealth),
-                ("Damage", Damage),
-                ("Speed", Speed),
-                ("Defence", Defence),
+                ("MaxHealth", Health.MaxHealth),
+                ("Damage", Strength.MaxStrength),
+                ("Speed", Speed.MaxSpeed),
+                ("Defence", Defence.MaxDefence),
             };
 
             Console.WriteLine($"{Name} got a Level Up!");
