@@ -21,6 +21,10 @@ public class Effect
     /// </summary>
     public (int, int) Poisen = (0, 0);
     /// <summary>
+    /// Level, Duration used for <see cref="Debuffs.Weakness">Weakness</see>
+    /// </summary>
+    public (int, int) Weakness = (0, 0);
+    /// <summary>
     /// runs Buff Methode on a Buff if the Duration is atleast 1 , and decreases it by one.
     /// </summary>
     /// <param name="fighter"></param>
