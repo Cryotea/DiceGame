@@ -1,18 +1,18 @@
 using diceGame.Weapon;
 using diceGame;
 using diceGame.Effects;
+using diceGame.Stats;
 
 namespace diceGame.Enemy;
 
 public class EnemySlime : IEnemy
 {
     public string Name {get; set;} = "Slime"; 
-    public double Health {get; set;} = 15;
-    public double Damage {get; set;} = 0.5;
-    public double Speed {get; set;} = 1;
-    public double Defence {get; set;} = 1.2;
+    public Health Health {get; set;} = new Health(15);
+    public Stats.Strength Strength {get; set;} = new Stats.Strength(0.5);
+    public Speed Speed {get; set;} = new Speed(0.5);
+    public Defence Defence {get; set;} = new Defence(1.2);
     public IWeapon Weapon {get; set;} = new NoWeapon ();
-    public double MaxHealth {get; set;} = 15 ;
     public int EXP {get; set;} = 3;
     public Effect Effect {get; set;} = new Effect();
     public int Money {get; set;} = 10;
@@ -23,19 +23,18 @@ public class EnemySlime : IEnemy
         {
             Name = Name,
             Health = Health,
-            Damage = Damage,
+            Strength = Strength,
             Speed = Speed,
             Defence = Defence,
             Weapon = Weapon,
-            MaxHealth = MaxHealth,
         };
     }
 
     public void GetStats(Player player)
     {
-        double OldStat = player.MaxHealth;
-        player.MaxHealth += 5;
-        Console.WriteLine($"{player.Name} got a stat up!\n Health : {OldStat} => {player.MaxHealth}!");
+        double OldStat = player.Health.MaxHealth;
+        player.Health.MaxHealth += 5;
+        Console.WriteLine($"{player.Name} got a stat up!\n Health : {OldStat} => {player.Health.MaxHealth}!");
     }
 
     public void GetExp(Player player)

@@ -1,17 +1,17 @@
 using diceGame.Weapon;
 using diceGame;
 using diceGame.Effects;
+using diceGame.Stats;
 
 namespace diceGame.Enemy;
 public class EnemyKnight : IEnemy
 {
     public string Name {get; set;} = "Knight"; 
-    public double Health {get; set;} = 10;  
-    public double Damage {get; set;} = 1;
-    public double Speed {get; set;} = 0.5;
-    public double Defence {get; set;} = 1;
+    public Health Health {get; set;} = new Health(10);  
+    public Stats.Strength Strength {get; set;} = new Stats.Strength(1);
+    public Speed Speed {get; set;} = new Speed(0.5);
+    public Defence Defence {get; set;} = new Defence(1);
     public IWeapon Weapon {get; set;} = new IronSword ();
-    public double MaxHealth{get; set;} = 10;
     public int EXP {get; set;} = 5;
     public Effect Effect {get; set;} = new Effect();
     public int Money {get; set;} = 10;
@@ -22,18 +22,18 @@ public class EnemyKnight : IEnemy
         {
             Name = Name,
             Health = Health,
-            Damage = Damage,
+            Strength = Strength,
             Speed = Speed,
             Defence = Defence,
             Weapon = Weapon,
-            MaxHealth = MaxHealth,
+            
         };
     }
      public void GetStats(Player player)
     {
-        double OldStat = player.Damage;
-        player.Damage += 0.2;
-        Console.WriteLine($"{player.Name} got a stat up!\n Damage : {OldStat} => {player.Damage}!");
+        double OldStat = player.Strength.MaxStrength;
+        player.Strength.MaxStrength += 0.2;
+        Console.WriteLine($"{player.Name} got a stat up!\n Damage : {OldStat} => {player.Strength.MaxStrength}!");
     }
     public void GetExp(Player player)
     {
