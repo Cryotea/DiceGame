@@ -9,8 +9,8 @@ public class SmallPotion : IItem
     private double Health = 15;
     public void UseItem(Player user)
     {
-        user.Health += Health;
-        if (user.Health > user.MaxHealth) user.Health = user.MaxHealth;
+        user.Health.HP += Health;
+        if (user.Health.HP > user.Health.MaxHealth) user.Health.HP = user.Health.MaxHealth;
         Amount--;
     }
 
