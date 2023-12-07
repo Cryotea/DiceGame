@@ -15,7 +15,7 @@ public class LootTable
         ("PotionOfRegenaration",40),
         ("GoldenFonduePizza", 10)
     };
-
+    
     public void GetLootTableItems(Player player)
     {
         var random = new Random();
