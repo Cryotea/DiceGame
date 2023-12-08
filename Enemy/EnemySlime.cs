@@ -32,9 +32,9 @@ public class EnemySlime : IEnemy
 
     public void GetStats(Player player)
     {
-        double OldStat = player.Health.MaxHealth;
-        player.Health.MaxHealth += 5;
-        Console.WriteLine($"{player.Name} got a stat up!\n Health : {OldStat} => {player.Health.MaxHealth}!");
+        double OldStat = player.Health.Max;
+        player.Health.Max += 5;
+        Console.WriteLine($"{player.Name} got a stat up!\n Health : {OldStat} => {player.Health.Max}!");
     }
 
     public void GetExp(Player player)

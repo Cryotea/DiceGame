@@ -34,9 +34,9 @@ public class EnemyArcher : IEnemy
 
     public void GetStats(Player player)
     {
-        double OldStat = player.Speed.MaxSpeed;
-        player.Speed.MaxSpeed += 0.2;
-        Console.WriteLine($"{player.Name} got a stat up!\n Speed : {OldStat} => {player.Speed.MaxSpeed}!");
+        double OldStat = player.Speed.Max;
+        player.Speed.Max += 0.2;
+        Console.WriteLine($"{player.Name} got a stat up!\n Speed : {OldStat} => {player.Speed.Max}!");
     }
 
     public void GetExp(Player player)

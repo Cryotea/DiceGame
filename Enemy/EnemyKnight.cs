@@ -31,9 +31,9 @@ public class EnemyKnight : IEnemy
     }
      public void GetStats(Player player)
     {
-        double OldStat = player.Strength.MaxStrength;
-        player.Strength.MaxStrength += 0.2;
-        Console.WriteLine($"{player.Name} got a stat up!\n Damage : {OldStat} => {player.Strength.MaxStrength}!");
+        double OldStat = player.Strength.Max;
+        player.Strength.Max += 0.2;
+        Console.WriteLine($"{player.Name} got a stat up!\n Damage : {OldStat} => {player.Strength.Max}!");
     }
     public void GetExp(Player player)
     {
