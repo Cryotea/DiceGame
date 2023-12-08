@@ -9,7 +9,7 @@ public class GoldenFonduePizza : IItem
     private double Health = 35;
     public void UseItem(Player user)
     {
-        user.Health.HP += Health;
+        user.Health.Current += Health;
         Amount--;
     }
 
