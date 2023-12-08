@@ -2,10 +2,13 @@ namespace diceGame.Item;
 
 using diceGame;
 
-public class GoldenFonduePizza : IItem
+public class GoldenFonduePizza : BaseItem ,IItem
 {
-    public string Id {get; set;} = "GoldenFonduePizza";
-    public int Amount {get; set;} 
+    public GoldenFonduePizza()
+    {
+        Id = "GoldenFonduePizza";
+    }
+    
     private double Health = 35;
     public void UseItem(Player user)
     {

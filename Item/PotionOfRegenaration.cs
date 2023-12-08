@@ -1,9 +1,14 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace diceGame.Item;
 
-public class PotionOfRegenaration : IItem
+public class PotionOfRegenaration : BaseItem, IItem
 {
-    public string Id {get; set;} = "PotionOfRegenaration";
-    public int Amount {get; set;} 
+    public PotionOfRegenaration()
+    {
+        Id = "PotionOfRegenaration";
+    }
+    
     private int RegenarationLevel = 2;
     private int RegenarationDuration = 3;
 

@@ -2,10 +2,13 @@ namespace diceGame.Item;
 
 using diceGame;
 
-public class SmallPotion : IItem
+public class SmallPotion : BaseItem, IItem
 {
-    public string Id {get; set;} = "SmallPotion";
-    public int Amount {get; set;} 
+    public SmallPotion()
+    {
+        Id = "SmallPotion";
+    }
+    
     private double Health = 15;
     public void UseItem(Player user)
     {
