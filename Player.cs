@@ -53,7 +53,7 @@ public class Player : IFighter
 
     public void ShowStats()
     {
-        Console.WriteLine($"Name :{Name}\tLvl:{Level} \tHP:{Health.HP}/{Health.MaxHealth} \nDMG:{Strength.MaxStrength} \t\tWeapon:{Weapon} \nSpeed:{Speed.MaxSpeed} \tDefence:{Defence.MaxDefence} ");
+        Console.WriteLine($"Name :{Name}\tLvl:{Level} \tHP:{Health.Current}/{Health.Max} \nDMG:{Strength.Max} \t\tWeapon:{Weapon} \nSpeed:{Speed.Max} \tDefence:{Defence.Max} ");
         this.Effect.Info();
         Console.WriteLine("press enter to go back");
         Console.ReadLine();
@@ -68,27 +68,27 @@ public class Player : IFighter
             OldStats = new (string, double)[]
             {
                 ("Level", Level),
-                ("MaxHealth", Health.MaxHealth),
-                ("Damage", Strength.MaxStrength),
-                ("Speed", Speed.MaxSpeed),
-                ("Defence", Defence.MaxDefence),
+                ("MaxHealth", Health.Max),
+                ("Damage", Strength.Max),
+                ("Speed", Speed.Max),
+                ("Defence", Defence.Max),
                 
             };
             
             Level++;
             EXP -= 10;
-            Health.MaxHealth = Health.MaxHealth + (Health.MaxHealth * 0.1);
-            Strength.MaxStrength = Strength.MaxStrength + (Strength.MaxStrength * 0.1);
-            Speed.MaxSpeed = Speed.MaxSpeed + (Speed.MaxSpeed * 0.1);
-            Defence.MaxDefence = Defence.MaxDefence + (Defence.MaxDefence * 0.1);
+            Health.Max = Health.Max + (Health.Max * 0.1);
+            Strength.Max = Strength.Max + (Strength.Max * 0.1);
+            Speed.Max = Speed.Max + (Speed.Max * 0.1);
+            Defence.Max = Defence.Max + (Defence.Max * 0.1);
 
             NewStats = new (string, double)[]
             {
                 ("Level", Level),
-                ("MaxHealth", Health.MaxHealth),
-                ("Damage", Strength.MaxStrength),
-                ("Speed", Speed.MaxSpeed),
-                ("Defence", Defence.MaxDefence),
+                ("MaxHealth", Health.Max),
+                ("Damage", Strength.Max),
+                ("Speed", Speed.Max),
+                ("Defence", Defence.Max),
             };
 
             Console.WriteLine($"{Name} got a Level Up!");
