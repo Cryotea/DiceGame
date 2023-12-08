@@ -11,8 +11,8 @@ public class IronSword: IWeapon
         double dice2 = random.Next(1,5);
         
       
-        defender.Health.HP = defender.Health.HP - (dice1 + dice2) * attacker.Strength.GetStat(attacker)  / defender.Defence.GetStat(defender);
-        Console.WriteLine($"{attacker.Name} rolled a {dice1} and a {dice2} and attacked {defender.Name} for {(dice1 + dice2) * attacker.Strength.GetStat(attacker) / defender.Defence.GetStat(defender)} Damage. {defender.Name} has {defender.Health.HP} HP left");
+        defender.Health.Current = defender.Health.Current - (dice1 + dice2) * attacker.Strength.GetStat(attacker.Effect)  / defender.Defence.GetStat(defender.Effect);
+        Console.WriteLine($"{attacker.Name} rolled a {dice1} and a {dice2} and attacked {defender.Name} for {(dice1 + dice2) * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect)} Damage. {defender.Name} has {defender.Health.Current} HP left");
         
     }
     public override string ToString()

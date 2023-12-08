@@ -9,8 +9,8 @@ public class CopperShortSword : IWeapon
         var random = new Random();
         double dice = random.Next(1,7);
         
-        defender.Health.HP = defender.Health.HP - (dice + attacker.Speed.GetStat(attacker)) * attacker.Strength.GetStat(attacker)  / defender.Defence.GetStat(defender);
-        Console.WriteLine($"{attacker.Name} rolled a {dice} and attacked {defender.Name} for {(dice + attacker.Speed.GetStat(attacker))* attacker.Strength.GetStat(attacker) / defender.Defence.GetStat(defender)} Damage. {defender.Name} has {defender.Health.HP} HP left");
+        defender.Health.Current = defender.Health.Current - (dice + attacker.Speed.GetStat(attacker.Effect)) * attacker.Strength.GetStat(attacker.Effect)  / defender.Defence.GetStat(defender.Effect);
+        Console.WriteLine($"{attacker.Name} rolled a {dice} and attacked {defender.Name} for {(dice + attacker.Speed.GetStat(attacker.Effect))* attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect)} Damage. {defender.Name} has {defender.Health.Current} HP left");
         
     }
     public override string ToString()

@@ -17,8 +17,8 @@ public class Bow : IWeapon
             critMultiplier += 0.25;
             isCrit = true;
         }
-        defender.Health.HP = defender.Health.HP - (((attacker.Speed.GetStat(attacker) + dice )* attacker.Strength.GetStat(attacker)) * critMultiplier) / defender.Defence.GetStat(defender);
-        Console.WriteLine($"{attacker.Name} rolled a {dice} {(isCrit ? "and got a CriticalHit " : "")}and attacked {defender.Name} for {(((attacker.Speed.GetStat(attacker) + dice )* attacker.Strength.GetStat(attacker)) * critMultiplier) / defender.Defence.GetStat(defender)} Damage. {defender.Name} has {defender.Health.HP} Hp left");
+        defender.Health.Current = defender.Health.Current - (((attacker.Speed.GetStat(attacker.Effect) + dice )* attacker.Strength.GetStat(attacker.Effect)) * critMultiplier) / defender.Defence.GetStat(defender.Effect);
+        Console.WriteLine($"{attacker.Name} rolled a {dice} {(isCrit ? "and got a CriticalHit " : "")}and attacked {defender.Name} for {(((attacker.Speed.GetStat(attacker.Effect) + dice )* attacker.Strength.GetStat(attacker.Effect)) * critMultiplier) / defender.Defence.GetStat(defender.Effect)} Damage. {defender.Name} has {defender.Health.Current} Hp left");
         
     }   
     public override string ToString()
