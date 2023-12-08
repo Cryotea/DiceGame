@@ -30,7 +30,7 @@ class Program
 
             if (hasFainted) break;
 
-            player.Health.HP = player.Health.MaxHealth;
+            player.Health.Current = player.Health.Max;
 
             Console.WriteLine($"\n{player.Name} encountered a {enemy.Name}");
             while (!gameEnd)
@@ -45,13 +45,13 @@ class Program
                 enemy.Effect.GetDebuffed(enemy);
                 enemy.Weapon.AttackPattern(enemy, player);
            
-                if (player.Health.HP <= 0)
+                if (player.Health.Current <= 0)
                 {
                     gameEnd = true;
                     hasFainted = true;
                 }
     
-                if (enemy.Health.HP <= 0)
+                if (enemy.Health.Current <= 0)
                 {
                     gameEnd = true;
                     Console.WriteLine($"{player.Name} defeated {enemy.Name}");
