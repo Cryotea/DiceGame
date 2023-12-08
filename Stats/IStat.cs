@@ -1,6 +1,8 @@
+using diceGame.Effects;
+
 namespace diceGame.Stats;
 
 public interface IStat
 {
-    public double GetStat(IFighter fighter);
+    public double GetStat(Effect effect);
 }

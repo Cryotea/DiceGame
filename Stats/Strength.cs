@@ -1,18 +1,19 @@
+using diceGame.Effects;
+
 namespace diceGame.Stats;
 
-public class Strength : IStat
+public class Strength : BaseStat, IStat
 {
-    public double MaxStrength;
     public Strength (double maxStrength)
     {
-        MaxStrength = maxStrength;
+        Max = maxStrength;
     }
 
-    public double GetStat(IFighter fighter)
+    public double GetStat(Effect effect)
     {
-        double Strength = MaxStrength;
-        double Strengthbuff = MaxStrength * (fighter.Effect.Strength.Item1 * 0.1);
-        double Weaknessdebuff = MaxStrength * (fighter.Effect.Weakness.Item1 * 0.1);
+        double Strength = Max;
+        double Strengthbuff = Max * (effect.Strength.Item1 * 0.1);
+        double Weaknessdebuff = Max * (effect.Weakness.Item1 * 0.1);
 
         Strength = Strength + Strengthbuff - Weaknessdebuff;
         return Strength;

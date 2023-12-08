@@ -1,17 +1,18 @@
+using diceGame.Effects;
+
 namespace diceGame.Stats;
 
-public class Speed : IStat
+public class Speed : BaseStat, IStat
 {
-    public double MaxSpeed;
 
     public Speed (double maxSpeed)
     {
-        MaxSpeed = maxSpeed;
+        Max = maxSpeed;
     }
 
-    public double GetStat(IFighter fighter)
+    public double GetStat(Effect effect)
     {
-        double Speed = MaxSpeed;
+        double Speed = Max;
 
         return Speed;
     }

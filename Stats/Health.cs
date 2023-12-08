@@ -1,19 +1,19 @@
+using diceGame.Effects;
+
 namespace diceGame.Stats;
 
-public class Health : IStat
+public class Health : BaseStat, IStat
 {
-    public double MaxHealth;
-    public double HP;
 
     public Health(double maxHealth)
     {
-        MaxHealth = maxHealth;
-        HP = maxHealth;
+        Max = maxHealth;
+        Current = maxHealth;
     }
     
-    public double GetStat(IFighter fighter)
+    public double GetStat(Effect effect)
     {
-        double Health = HP;
+        double Health = Current;
 
         return Health;
     }

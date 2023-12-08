@@ -1,17 +1,17 @@
+using diceGame.Effects;
+
 namespace diceGame.Stats;
 
-public class Defence : IStat
+public class Defence : BaseStat, IStat
 {
-    public double MaxDefence;
-
     public Defence(double maxDefence)
     {
-        MaxDefence = maxDefence;
+        Max = maxDefence;
     }
 
-    public double GetStat(IFighter fighter)
+    public double GetStat(Effect effect)
     {
-        double Defence = MaxDefence;
+        double Defence = Max;
 
         return Defence;
     }
