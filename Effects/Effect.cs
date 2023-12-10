@@ -1,5 +1,7 @@
 using diceGame.Effects.Buffs;
 using diceGame.Effects.Debuffs;
+using Spectre.Console;
+
 namespace diceGame.Effects;
 
 public class Effect
@@ -47,7 +49,7 @@ public class Effect
 
     public void Info()
     {
-        if (Regenaration.Item2 > 0) Console.WriteLine($"Regenaration Lvl:{Regenaration.Item1}, Duration:{Regenaration.Item2}");
-        if (Poisen.Item2 > 0) Console.WriteLine($"Poisen Lvl:{Poisen.Item1}, Duration:{Poisen.Item2}");
+        if (Regenaration.Item2 > 0) AnsiConsole.MarkupLine($"Regenaration Lvl:{Regenaration.Item1}, Duration:{Regenaration.Item2}");
+        if (Poisen.Item2 > 0) AnsiConsole.MarkupLine($"Poisen Lvl:{Poisen.Item1}, Duration:{Poisen.Item2}");
     }
 }
