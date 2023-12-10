@@ -1,11 +1,11 @@
-namespace diceGame;
-
 using diceGame.Item;
 using diceGame.Weapon;
 using diceGame.Enemy;
 using diceGame.Effects;
 using diceGame.Stats;
+using Spectre.Console;
 
+namespace diceGame;
 public class Player : IFighter
 {
     public string Name {get; set;} = "Player";
@@ -23,39 +23,44 @@ public class Player : IFighter
     public bool PlayerMove(Player player, IFighter enemy, bool usedMove)
     {
         
-        Console.WriteLine($"what is {player.Name} doing ");
-        Console.WriteLine($"|1 = Attack |2 = Inventory |3 = {player.Name}'s Stats ");
-        string input = Console.ReadLine();
+        
+        
+        string CurrentPlayerMove = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+                .Title($"\nwhat is {player.Name} doing ?")
+                .PageSize(10)
+                .AddChoices(new[] {
+                    "Attack", "Inventory", $"{player.Name}'s Stats "
+                }));
+        
         // switch instead of if
-        if (input == "1")
+        switch (CurrentPlayerMove)
         {
-            Effect.GetBuffed(this);
-            Effect.GetDebuffed(this);
-            player.Weapon.AttackPattern(player, enemy);
-            usedMove = true;
-            return usedMove;
+            case "Attack":
+                Effect.GetBuffed(this);
+                Effect.GetDebuffed(this);
+                player.Weapon.AttackPattern(player, enemy);
+                usedMove = true;
+                return usedMove;
+                
+            case "Inventory":
+                Inventory.OpenInventory(this);
+                usedMove = false;
+                return usedMove;
+            
+            default:
+                player.ShowStats();
+                return false;
+                
         }
-        if (input == "2")
-        {
-            Inventory.OpenInventory(this);
-            usedMove = false;
-            return usedMove;
-        }
-        if (input == "3")
-        {
-            player.ShowStats();
-        }
-        else Console.WriteLine("Please Input a Valid Number");
-        usedMove = false;
-        return usedMove;
         
     }
 
     public void ShowStats()
     {
-        Console.WriteLine($"Name :{Name}\tLvl:{Level} \tHP:{Health.Current}/{Health.Max} \nDMG:{Strength.Max} \t\tWeapon:{Weapon} \nSpeed:{Speed.Max} \tDefence:{Defence.Max} ");
+        AnsiConsole.MarkupLine($"Name :{Name}\tLvl:{Level} \tHP:{Health.Current}/{Health.Max} \nDMG:{Strength.Max} \t\tWeapon:{Weapon} \nSpeed:{Speed.Max} \tDefence:{Defence.Max} ");
         this.Effect.Info();
-        Console.WriteLine("press enter to go back");
+        AnsiConsole.MarkupLine("press enter to go back");
         Console.ReadLine();
     }
 
@@ -68,10 +73,10 @@ public class Player : IFighter
             OldStats = new (string, double)[]
             {
                 ("Level", Level),
-                ("MaxHealth", Health.Max),
-                ("Damage", Strength.Max),
-                ("Speed", Speed.Max),
-                ("Defence", Defence.Max),
+                (Health.ToString(), Health.Max),
+                (Strength.ToString(), Strength.Max),
+                (Speed.ToString(), Speed.Max),
+                (Defence.ToString(), Defence.Max),
                 
             };
             
@@ -85,21 +90,24 @@ public class Player : IFighter
             NewStats = new (string, double)[]
             {
                 ("Level", Level),
-                ("MaxHealth", Health.Max),
-                ("Damage", Strength.Max),
-                ("Speed", Speed.Max),
-                ("Defence", Defence.Max),
+                (Health.ToString(), Health.Max),
+                (Strength.ToString(), Strength.Max),
+                (Speed.ToString(), Speed.Max),
+                (Defence.ToString(), Defence.Max),
             };
-
-            Console.WriteLine($"{Name} got a Level Up!");
-            Console.WriteLine($" Level {OldStats[0].Item2} => {NewStats[0].Item2}");
-
-            int count = 1;
-            while(count < 5)
-            {   
-                Console.WriteLine($"{OldStats[count].Item1} : {OldStats[count].Item2} => {NewStats[count].Item2}");
-                count++;
-            }
+            
+            var panel = new Panel($"{Name} got a Level Up" +
+                                  $"\n{OldStats[0].Item2} => {NewStats[0].Item2}" +
+                                  $"\n{NewStats[1].Item1} up!" +
+                                  $"\n{OldStats[1].Item1} : {OldStats[1].Item2} => {NewStats[1].Item2}" +
+                                  $"\n{NewStats[2].Item1} up!" +
+                                  $"\n{OldStats[2].Item1} : {OldStats[1].Item2} => {NewStats[1].Item2}"+
+                                  $"\n{NewStats[3].Item1} up!" +
+                                  $"\n{OldStats[3].Item1} : {OldStats[1].Item2} => {NewStats[1].Item2}" +
+                                  $"\n{NewStats[4].Item1} up!" +
+                                  $"\n{OldStats[4].Item1} : {OldStats[1].Item2} => {NewStats[1].Item2}"
+                                  );
+            AnsiConsole.Write(panel);
     
         }
     }
