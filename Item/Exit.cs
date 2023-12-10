@@ -1,0 +1,24 @@
+using diceGame.Weapon;
+
+namespace diceGame.Item;
+
+public class Exit : IItem, IWeapon
+{
+    public int Amount { get; set; } = 1;
+    public string Id { get; set; } = "Exit";
+    double IItem.Amount { get; set; } = 1;
+    public void AttackPattern(IFighter attacker, IFighter defender)
+    {
+        throw new NotImplementedException();
+    }
+    
+    public void UseItem(Player user)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override string ToString()
+    {
+        return "[red]Exit[/]";
+    }
+}
