@@ -1,5 +1,4 @@
-using System.Security.Cryptography.X509Certificates;
-
+using Spectre.Console;
 namespace diceGame.Item;
 
 public class PotionOfRegenaration : BaseItem, IItem
@@ -17,11 +16,11 @@ public class PotionOfRegenaration : BaseItem, IItem
         user.Effect.Regenaration.Item1 = RegenarationLevel;
         user.Effect.Regenaration.Item2 = RegenarationDuration;
         Amount--;
-        Console.WriteLine($"{user.Name} has Regenaration for {RegenarationDuration} turns!");
+        AnsiConsole.MarkupLine($"{user.Name} has Regeneration for {RegenarationDuration} turns!");
     }
 
     public override string ToString()
     {
-        return "PotionOfRegenaration";
+        return $"{Color}PotionOfRegeneration[/]";
     }
 }

@@ -18,6 +18,6 @@ public class GoldenFonduePizza : BaseItem ,IItem
 
     public override string ToString()
     {
-        return "GoldenFonduePizza";
+        return $"{Color}GoldenFonduePizza[/]";
     }
 }

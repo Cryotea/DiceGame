@@ -20,6 +20,6 @@ public class MediumPotion : BaseItem, IItem
 
     public override string ToString()
     {
-        return "Medium Potion";
+        return $"{Color}Medium Potion[/]";
     }
 }

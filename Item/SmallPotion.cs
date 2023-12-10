@@ -19,6 +19,6 @@ public class SmallPotion : BaseItem, IItem
 
     public override string ToString()
     {
-        return "Small Potion";
+        return $"{Color}Small Potion[/]";
     }
 }
