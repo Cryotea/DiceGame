@@ -1,5 +1,6 @@
 using diceGame.Item;
 using diceGame.Weapon;
+using Spectre.Console;
 
 namespace diceGame;
 
@@ -24,10 +25,10 @@ public class Shop
             PotionOfRegenaration
         };
 
-        Console.WriteLine("Welcome to the shope, Enter the number next to the Item to Item to buy it. \n press x to exit the shop. ");
+        AnsiConsole.MarkupLine("Welcome to the shope, Enter the number next to the Item to Item to buy it. \n press x to exit the shop. ");
         foreach(var Item in BuyItems)
         {
-            Console.WriteLine($"{Counter}.{Item.Item2} for {Item.Item2}$ !");
+            AnsiConsole.MarkupLine($"{Counter}.{Item.Item2} for {Item.Item2}$ !");
             Counter++;
         }
         string input = Console.ReadLine();

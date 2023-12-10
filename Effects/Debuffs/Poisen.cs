@@ -1,3 +1,5 @@
+using Spectre.Console;
+
 namespace diceGame.Effects.Debuffs;
 
 public class Poisen : IDebuff
@@ -6,6 +8,6 @@ public class Poisen : IDebuff
     {
         double Poisen = user.Health.Max * ( Level * 0.1);
         user.Health.Current = user.Health.Current - (user.Health.Max * ( Level * 0.1));
-        Console.WriteLine($"{user.Name} took Poisen Damage for {Poisen}!\nThe duration is {user.Effect.Poisen.Item2} ");
+        AnsiConsole.MarkupLine($"{user.Name} took Poisen Damage for {Poisen}!\nThe duration is {user.Effect.Poisen.Item2} ");
     }
 }

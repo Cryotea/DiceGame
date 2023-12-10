@@ -1,6 +1,7 @@
 using diceGame.Effects.Debuffs;
 using diceGame.Item;
 using diceGame.Weapon;
+using Spectre.Console;
 
 namespace diceGame;
 
@@ -11,7 +12,8 @@ public class Inventory
         new SmallPotion(),
         new MediumPotion(),
         new GoldenFonduePizza(),
-        new PotionOfRegenaration()
+        new PotionOfRegenaration(),
+        new Exit()
 
     }; 
     public IWeapon[] AllWeapons =
@@ -21,59 +23,64 @@ public class Inventory
         new IronSword(),
         new Bow(),
         new PoisenCrossbow(),
-        new Shovel()
+        new Shovel(),
+        new Exit()
     };
 
     public void OpenInventory(Player player)
     {
+        var InventorySeletion= AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+                .Title("[darkorange]Weapons[/] or [lightgoldenrod1]Items[/]?")
+                .PageSize(10)
+                .MoreChoicesText("[grey](Move up and down to reveal more fruits)[/]")
+                .AddChoices(new[] {
+                    "[darkorange]Weapons[/]","[lightgoldenrod1]Items[/]"
+                }));
 
-        var notEmptyItems = AllItems.Where(item => item.Amount > 0).ToList();
-        foreach (var Items in notEmptyItems)
+        if (InventorySeletion == "[lightgoldenrod1]Items[/]" )
         {
-            Console.WriteLine($"|{Items} x {Items.Amount} |");
-        }
-        Console.WriteLine("press X to go back\n press E to equip a different Weapon");
-        string input = Console.ReadLine();
+            var notEmptyItems = AllItems.Where(item => item.Amount > 0).ToList();
+       
+            var ItemSelection = AnsiConsole.Prompt(
+                new SelectionPrompt<IItem>()
+                    .Title("What [lightgoldenrod1]Item[/] do you want to use?")
+                    .PageSize(10)
+                    .MoreChoicesText("Move up and down to see more [lightgoldenrod1]Items[/]")
+                    .AddChoices(notEmptyItems
+                    
+                    ).UseConverter((item => item.ToString() )));
         
-        if (input != null && input.ToLower() == "x") return;
+            
 
-        if (input != null && input.ToLower() == "e")
+            if (ItemSelection.Id == "Exit") return;
+            
+            ItemSelection.UseItem(player);
+            AnsiConsole.MarkupLine($"{player.Name} used {ItemSelection}");
+            
+            
+        }
+
+        if (InventorySeletion == "[darkorange]Weapons[/]" )
         {
             var ownedWeapons = AllWeapons.Where(Weapon => Weapon.Amount >0).ToList();
-            foreach (var Weapon in ownedWeapons)
-            {
-                Console.WriteLine($"|{Weapon} |");
-            }
-            Console.WriteLine("Input the Nuber from the Weapon to equip it\n or press x to go back");
-            string weaponinput = Console.ReadLine();
+            
+            var WeaponSelection = AnsiConsole.Prompt(
+                new SelectionPrompt<IWeapon>()
+                    .Title("What [lightgoldenrod1]Item[/] do you want to use?")
+                    .PageSize(10)
+                    .MoreChoicesText("Move up and down to see more [lightgoldenrod1]Items[/]")
+                    .AddChoices(ownedWeapons
+                    
+                    ).UseConverter((item => item.ToString() )));
 
-            if (input != null && input.ToLower() == "x") OpenInventory(player);
+            if (WeaponSelection.Id == "Exit") return;
 
-            if (int.TryParse(weaponinput, out int parsedInput2))
-            {
-                var weapon = AllWeapons.FirstOrDefault(weapon => weapon.Id == ownedWeapons[parsedInput2-1].Id);
+            
+                var weapon = AllWeapons.FirstOrDefault(weapon => weapon.Id == WeaponSelection.Id);
                 player.Weapon = weapon;
-                Console.WriteLine($"{player.Name} equiped {weapon}!");
+                AnsiConsole.MarkupLine($"{player.Name} equiped {weapon}!");
                 OpenInventory(player);
-            }
-
-            else 
-            {
-                Console.WriteLine("Invalid Input");
-                OpenInventory(player);
-            }
-       }
-
-        if (int.TryParse(input, out int parsedInput))
-        {
-            notEmptyItems[parsedInput-1].UseItem(player);
-            Console.WriteLine($"{player.Name} used {notEmptyItems[parsedInput-1]}");
-        }
-
-        else 
-        {
-            Console.WriteLine("Invalid Input");
-            OpenInventory(player);
         }
     }
 

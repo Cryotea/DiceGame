@@ -2,6 +2,7 @@
 using diceGame;
 using diceGame.Enemy;
 using diceGame.Weapon;
+using Spectre.Console;
 
 class Program
 {
@@ -19,8 +20,7 @@ class Program
 
         bool hasFainted = false; 
 
-        Console.WriteLine("Wellcome to DiceGame \nPlease input youre Name ");
-        player.Name = Console.ReadLine();
+        player.Name = AnsiConsole.Ask<string>("Welcome to DiceGame Whats your [green]name[/]?");
 
         while (!hasFainted && Fight.GetEnemyEncounters() > 0)
         {
@@ -32,7 +32,7 @@ class Program
 
             player.Health.Current = player.Health.Max;
 
-            Console.WriteLine($"\n{player.Name} encountered a {enemy.Name}");
+           AnsiConsole.MarkupLine($"\n{player.Name} encountered a [red]{enemy.Name}[/] ");
             while (!gameEnd)
             {
                 bool usedMove = false;
@@ -54,7 +54,7 @@ class Program
                 if (enemy.Health.Current <= 0)
                 {
                     gameEnd = true;
-                    Console.WriteLine($"{player.Name} defeated {enemy.Name}");
+                    AnsiConsole.MarkupLine($"\n{player.Name} defeated [red]{enemy.Name}[/]");
                 }
             }
             loot.GetLoot(player , enemy);
@@ -62,14 +62,14 @@ class Program
 
         if (hasFainted)
         {
-            Console.WriteLine($"You lost! {player.Name} has died D:");
-            Console.WriteLine("Press enter to exit");
+            AnsiConsole.MarkupLine($"\nYou [red]lost[/]! {player.Name} has [red]died[/] D:");
+            AnsiConsole.MarkupLine("Press enter to exit");
             Console.ReadLine();
         }  
         else
         {
-            Console.WriteLine($"{player.Name} won all the fights! Good job!");
-            Console.WriteLine("Press enter to exit");
+            AnsiConsole.MarkupLine($"{player.Name} won all the fights! Good job!");
+            AnsiConsole.MarkupLine("Press enter to exit");
             Console.ReadLine();
         }
 

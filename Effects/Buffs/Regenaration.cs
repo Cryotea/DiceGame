@@ -1,3 +1,5 @@
+using Spectre.Console;
+
 namespace diceGame.Effects.Buffs;
 
 public class Regenaration : IBuff
@@ -10,6 +12,6 @@ public class Regenaration : IBuff
         {
             user.Health.Current = user.Health.Max;
         }
-        Console.WriteLine($"{user.Name}'s Regenaration healed them for {Healed}!\n{user.Name} has {user.Health.Current}Hp now! \nThe duration is of Regenaration is {user.Effect.Regenaration.Item2}");
+        AnsiConsole.MarkupLine($"{user.Name}'s Regenaration healed them for {Healed}!\n{user.Name} has {user.Health.Current}Hp now! \nThe duration is of Regenaration is {user.Effect.Regenaration.Item2}");
     }
 }
