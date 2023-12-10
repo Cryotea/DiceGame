@@ -4,6 +4,7 @@ using System.Dynamic;
 using diceGame.Effects;
 using diceGame.Item;
 using diceGame.Stats;
+using Spectre.Console;
 
 namespace diceGame.Enemy;
 public class EnemyArcher : IEnemy
@@ -36,19 +37,19 @@ public class EnemyArcher : IEnemy
     {
         double OldStat = player.Speed.Max;
         player.Speed.Max += 0.2;
-        Console.WriteLine($"{player.Name} got a stat up!\n Speed : {OldStat} => {player.Speed.Max}!");
+        AnsiConsole.MarkupLine($"{player.Name} got a stat up!\n Speed : {OldStat} => {player.Speed.Max}!");
     }
 
     public void GetExp(Player player)
     {
         player.EXP += EXP;
-        Console.WriteLine($"{player.Name} got {EXP} EXP!");
+        AnsiConsole.MarkupLine($"{player.Name} got {EXP} EXP!");
         player.LevelUp();
     }
 
     public void GetMoney(Player player)
     {
         player.Money += Money;
-        Console.WriteLine($"{player.Name} got {Money}$ !");
+        AnsiConsole.MarkupLine($"{player.Name} got {Money}$ !");
     }
 }
