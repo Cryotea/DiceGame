@@ -1,9 +1,10 @@
-using System.Security.Cryptography.X509Certificates;
+
 using diceGame.Item;
+using Spectre.Console;
 
 namespace diceGame.Weapon;
 
-public class PoisenCrossbow : IWeapon
+public class PoisenCrossbow :BaseWeapon, IWeapon
 {
     public string Id {get; set;} = "PoisenCrossbow";
     public int Amount {get; set;} 
@@ -12,30 +13,32 @@ public class PoisenCrossbow : IWeapon
     public void AttackPattern(IFighter attacker, IFighter defender)
     {
         var random = new Random();
-        
-        if (Turn == 1)
+
+        switch (Turn)
         {
-            Strength = random.Next(0, 11);
-            Console.WriteLine($"{attacker.Name} draws the Crossbow with {Strength} Strength");
-        }
-        if (Turn == 2)
-        {
-            int poisenLevel = random.Next(1,3);
-            int poisenDuration = random.Next(1,3);
-            double dice = random.Next(1,6);
+            case 1:
+                Strength = random.Next(0, 11);
+                AnsiConsole.MarkupLine($"\n{attacker.Name} draws the Crossbow with [red]{Strength} Strength[/]");
+                break;
             
-            defender.Effect.Poisen.Item1 = poisenLevel;
-            defender.Effect.Poisen.Item2 += poisenDuration;
-            
-            defender.Health.Current = defender.Health.Current - (Strength * 0.1) * dice + dice;
-            double Damage = (Strength * 0.1) * dice + dice;
-            Console.WriteLine($"{attacker.Name} rolled a {dice} and attacked {defender.Name} for {Damage}!");
+            case 2:
+                int poisenLevel = random.Next(1,3);
+                int poisenDuration = random.Next(1,3);
+                double dice = random.Next(1,6);
+
+                defender.Effect.Poisen.Item1 = poisenLevel;
+                defender.Effect.Poisen.Item2 += poisenDuration;
+
+                defender.Health.Current = defender.Health.Current - (Strength * 0.1) * dice + dice;
+                double Damage = (Strength * 0.1) * dice + dice;
+                AnsiConsole.MarkupLine($"{attacker.Name} rolled a [red]{dice}[/] and attacked {defender.Name} for [red]{Damage} Damage[/]!");
+                break;
         }
         Turn++;
         if (Turn == 3)Turn = 1;
     }
     public override string ToString()
     {
-        return "PoisenCrossbow";
+        return $"{Color}PoisonCrossbow[/]";
     }
 }

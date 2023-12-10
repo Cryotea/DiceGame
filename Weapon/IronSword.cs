@@ -1,6 +1,8 @@
+using Spectre.Console;
+
 namespace diceGame.Weapon;
 
-public class IronSword: IWeapon
+public class IronSword:BaseWeapon, IWeapon
 {
     public string Id {get; set;} = "IronSword";
     public int Amount {get; set;} 
@@ -12,11 +14,11 @@ public class IronSword: IWeapon
         
       
         defender.Health.Current = defender.Health.Current - (dice1 + dice2) * attacker.Strength.GetStat(attacker.Effect)  / defender.Defence.GetStat(defender.Effect);
-        Console.WriteLine($"{attacker.Name} rolled a {dice1} and a {dice2} and attacked {defender.Name} for {(dice1 + dice2) * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect)} Damage. {defender.Name} has {defender.Health.Current} HP left");
+        AnsiConsole.MarkupLine($"\n{attacker.Name} rolled a [red]{dice1}[/] and a [red]{dice2}[/] and attacked {defender.Name} for [red]{(dice1 + dice2) * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect)} Damage[/]. {defender.Name} has[green] {defender.Health.Current} HP[/] left");
         
     }
     public override string ToString()
     {
-        return "IronSword";
+        return $"{Color}IronSword[/]";
     }
 }

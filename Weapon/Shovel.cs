@@ -1,6 +1,8 @@
+using Spectre.Console;
+
 namespace diceGame.Weapon;
 
-public class Shovel: IWeapon
+public class Shovel:BaseWeapon, IWeapon
 {
     public string Id {get; set;} = "Shovel";
     public int Amount {get; set;} 
@@ -11,11 +13,11 @@ public class Shovel: IWeapon
         double dice2 = random.Next(1,3);
         
         defender.Health.Current = defender.Health.Current - (dice2 * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect) +(dice +(defender.Strength.GetStat(defender.Effect) * 0.1)));
-        Console.WriteLine($"{attacker.Name} rolled a {dice} and a {dice2} and digged a hole, and kicked {defender.Name} for {dice2 * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect)}. {defender.Name} fell in the hole and took {dice +(defender.Strength.GetStat(defender.Effect) * 0.1)} fall damage!");
+        AnsiConsole.MarkupLine($"\n{attacker.Name} rolled a [red]{dice} [/]and a [red]{dice2}[/]and dug a hole, and [red]kicked[/] {defender.Name} for[red] {dice2 * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect)}[/]. {defender.Name} fell in the hole and took[red] {dice +(defender.Strength.GetStat(defender.Effect) * 0.1)} fall damage[/]!");
         
     }
     public override string ToString()
     {
-        return "Shovel";
+        return $"{Color}Shovel[/]";
     }
 }

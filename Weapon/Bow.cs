@@ -1,6 +1,9 @@
+
+using Spectre.Console;
+
 namespace diceGame.Weapon;
 
-public class Bow : IWeapon
+public class Bow :BaseWeapon, IWeapon
 {   
     public string Id {get; set;} = "Bow";
     public int Amount {get; set;} 
@@ -18,11 +21,11 @@ public class Bow : IWeapon
             isCrit = true;
         }
         defender.Health.Current = defender.Health.Current - (((attacker.Speed.GetStat(attacker.Effect) + dice )* attacker.Strength.GetStat(attacker.Effect)) * critMultiplier) / defender.Defence.GetStat(defender.Effect);
-        Console.WriteLine($"{attacker.Name} rolled a {dice} {(isCrit ? "and got a CriticalHit " : "")}and attacked {defender.Name} for {(((attacker.Speed.GetStat(attacker.Effect) + dice )* attacker.Strength.GetStat(attacker.Effect)) * critMultiplier) / defender.Defence.GetStat(defender.Effect)} Damage. {defender.Name} has {defender.Health.Current} Hp left");
+        AnsiConsole.MarkupLine($"\n{attacker.Name} rolled a [red]{dice}[/] {(isCrit ? "and got a [red]CriticalHit[/] " : "")}and attacked {defender.Name} for [red]{(((attacker.Speed.GetStat(attacker.Effect) + dice )* attacker.Strength.GetStat(attacker.Effect)) * critMultiplier) / defender.Defence.GetStat(defender.Effect)} Damage[/]. {defender.Name} has [green]{defender.Health.Current} Hp [/] left");
         
     }   
     public override string ToString()
     {
-        return "Bow";
+        return $"{Color}Bow[/]";
     }
 }
