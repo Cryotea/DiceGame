@@ -4,9 +4,10 @@ namespace diceGame.Stats;
 
 public class Health : BaseStat, IStat
 {
-
+    public string Color = "[lime]";
     public Health(double maxHealth)
     {
+        Id = "Health";
         Max = maxHealth;
         Current = maxHealth;
     }
@@ -17,6 +18,10 @@ public class Health : BaseStat, IStat
 
         return Health;
     }
-    
+
+    public override string ToString()
+    {
+        return $"{Color}Health[/]";
+    }
 }
 

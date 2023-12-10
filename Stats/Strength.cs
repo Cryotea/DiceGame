@@ -1,11 +1,14 @@
 using diceGame.Effects;
+using Spectre.Console;
 
 namespace diceGame.Stats;
 
 public class Strength : BaseStat, IStat
 {
+    public string Color = "[maroon]";
     public Strength (double maxStrength)
     {
+        Id = "Strength";
         Max = maxStrength;
     }
 
@@ -17,5 +20,10 @@ public class Strength : BaseStat, IStat
 
         Strength = Strength + Strengthbuff - Weaknessdebuff;
         return Strength;
+    }
+
+    public override string ToString()
+    {
+        return $"{Color}Strength[/]";
     }
 }
