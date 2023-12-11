@@ -72,7 +72,7 @@ public class Player : IFighter
                               $"\nWeapon:{Weapon}" +
                               $"\n{Speed.ToString()}:{Speed.Max}" +
                               $"\n{Defence.ToString()}:{Defence.Max}" +
-                              $"\n{string.Join("\n", this.Effect.Info)}"
+                              $"\n{string.Join("\n", this.Effect.Info())}"
                               );
         
         panel.Header = new PanelHeader($"{Name}'s Stats");
