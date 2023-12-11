@@ -47,9 +47,11 @@ public class Effect
         }
     }
 
-    public void Info()
-    {
-        if (Regenaration.Item2 > 0) AnsiConsole.MarkupLine($"Regenaration Lvl:{Regenaration.Item1}, Duration:{Regenaration.Item2}");
-        if (Poisen.Item2 > 0) AnsiConsole.MarkupLine($"Poisen Lvl:{Poisen.Item1}, Duration:{Poisen.Item2}");
+    public List<string> Info()
+    { 
+        List<string> info = new List<string>();
+        if (Regenaration.Item2 > 0) info.Add($"Regenaration Lvl:{Regenaration.Item1}, Duration:{Regenaration.Item2}"); 
+        if (Poisen.Item2 > 0) info.Add($"Poisen Lvl:{Poisen.Item1}, Duration:{Poisen.Item2}");
+        return info;
     }
 }
