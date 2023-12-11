@@ -22,8 +22,9 @@ public class Player : IFighter
 
     public bool PlayerMove(Player player, IFighter enemy, bool usedMove)
     {
-        AnsiConsole.MarkupLine($"\n{player.Name}'s {player.Health.ToString()}");
+        AnsiConsole.MarkupLine($"\n{player.Name}'s {player.Health.Color}HP {player.Health.Current}[/]/{player.Health.Color}{player.Health.Max}[/]");
         AnsiConsole.Write(new BreakdownChart()
+            .HideTags()
             .Width(30)
             .AddItem($"Health", Health.Current, Color.Lime)
             .AddItem($"LostHealth", Health.Max - Health.Current, Color.Grey15 ));
@@ -40,6 +41,7 @@ public class Player : IFighter
         switch (CurrentPlayerMove)
         {
             case "Attack":
+                AnsiConsole.Clear();
                 Effect.GetBuffed(this);
                 Effect.GetDebuffed(this);
                 player.Weapon.AttackPattern(player, enemy);
@@ -75,6 +77,7 @@ public class Player : IFighter
         
         AnsiConsole.MarkupLine("press enter to go back");
         Console.ReadLine();
+        AnsiConsole.Clear();
     }
 
     public void LevelUp()
