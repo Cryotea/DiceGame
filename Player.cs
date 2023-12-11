@@ -58,8 +58,26 @@ public class Player : IFighter
 
     public void ShowStats()
     {
-        AnsiConsole.MarkupLine($"Name :{Name}\tLvl:{Level} \tHP:{Health.Current}/{Health.Max} \nDMG:{Strength.Max} \t\tWeapon:{Weapon} \nSpeed:{Speed.Max} \tDefence:{Defence.Max} ");
-        this.Effect.Info();
+        var temp = $"Lvl:{Level}" +
+                   $"\n{Health.ToString()}:{Health.Current}/{Health.Max}" +
+                   $"\n{Strength.ToString()}:{Strength.Max}" +
+                   $"\nWeapon:{Weapon}" +
+                   $"\n{Speed.ToString()}:{Speed.Max}" +
+                   $"\n{Defence.ToString()}:{Defence.Max}" +
+                   $"\n{string.Join("\n", this.Effect.Info)}";
+        
+        var panel = new Panel($"Lvl:{Level}" +
+                              $"\n{Health.ToString()}:{Health.Current}/{Health.Max}" +
+                              $"\n{Strength.ToString()}:{Strength.Max}" +
+                              $"\nWeapon:{Weapon}" +
+                              $"\n{Speed.ToString()}:{Speed.Max}" +
+                              $"\n{Defence.ToString()}:{Defence.Max}" +
+                              $"\n{string.Join("\n", this.Effect.Info)}"
+                              );
+        
+        panel.Header = new PanelHeader($"{Name}'s Stats");
+        AnsiConsole.Write(panel);
+        
         AnsiConsole.MarkupLine("press enter to go back");
         Console.ReadLine();
     }
