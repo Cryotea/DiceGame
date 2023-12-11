@@ -13,15 +13,15 @@ public class PoisenCrossbow :BaseWeapon, IWeapon
     public void AttackPattern(IFighter attacker, IFighter defender)
     {
         var random = new Random();
-
-        switch (Turn)
+        
+        switch (Turn % 2)
         {
-            case 1:
+            case 0:
                 Strength = random.Next(0, 11);
                 AnsiConsole.MarkupLine($"\n{attacker.Name} draws the Crossbow with [red]{Strength} Strength[/]");
                 break;
             
-            case 2:
+            case 1:
                 int poisenLevel = random.Next(1,3);
                 int poisenDuration = random.Next(1,3);
                 double dice = random.Next(1,6);
@@ -34,8 +34,6 @@ public class PoisenCrossbow :BaseWeapon, IWeapon
                 AnsiConsole.MarkupLine($"{attacker.Name} rolled a [red]{dice}[/] and attacked {defender.Name} for [red]{Damage} Damage[/]!");
                 break;
         }
-        Turn++;
-        if (Turn == 3)Turn = 1;
     }
     public override string ToString()
     {
