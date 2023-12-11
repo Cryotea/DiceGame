@@ -58,14 +58,6 @@ public class Player : IFighter
 
     public void ShowStats()
     {
-        var temp = $"Lvl:{Level}" +
-                   $"\n{Health.ToString()}:{Health.Current}/{Health.Max}" +
-                   $"\n{Strength.ToString()}:{Strength.Max}" +
-                   $"\nWeapon:{Weapon}" +
-                   $"\n{Speed.ToString()}:{Speed.Max}" +
-                   $"\n{Defence.ToString()}:{Defence.Max}" +
-                   $"\n{string.Join("\n", this.Effect.Info)}";
-        
         var panel = new Panel($"Lvl:{Level}" +
                               $"\n{Health.ToString()}:{Health.Current}/{Health.Max}" +
                               $"\n{Strength.ToString()}:{Strength.Max}" +
@@ -119,11 +111,11 @@ public class Player : IFighter
                                   $"\n{NewStats[1].Item1} up!" +
                                   $"\n{OldStats[1].Item1} : {OldStats[1].Item2} => {NewStats[1].Item2}" +
                                   $"\n{NewStats[2].Item1} up!" +
-                                  $"\n{OldStats[2].Item1} : {OldStats[1].Item2} => {NewStats[1].Item2}"+
+                                  $"\n{OldStats[2].Item1} : {OldStats[2].Item2} => {NewStats[2].Item2}"+
                                   $"\n{NewStats[3].Item1} up!" +
-                                  $"\n{OldStats[3].Item1} : {OldStats[1].Item2} => {NewStats[1].Item2}" +
+                                  $"\n{OldStats[3].Item1} : {OldStats[3].Item2} => {NewStats[3].Item2}" +
                                   $"\n{NewStats[4].Item1} up!" +
-                                  $"\n{OldStats[4].Item1} : {OldStats[1].Item2} => {NewStats[1].Item2}"
+                                  $"\n{OldStats[4].Item1} : {OldStats[4].Item2} => {NewStats[4].Item2}"
                                   );
             AnsiConsole.Write(panel);
     
