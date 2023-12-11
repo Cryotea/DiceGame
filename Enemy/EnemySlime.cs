@@ -35,7 +35,7 @@ public class EnemySlime : IEnemy
     {
         double OldStat = player.Health.Max;
         player.Health.Max += 5;
-        AnsiConsole.MarkupLine($"{player.Name} got a stat up!\n Health : {OldStat} => {player.Health.Max}!");
+        AnsiConsole.MarkupLine($"{player.Name} got a stat up!\n {Health.ToString()} : {OldStat} => {player.Health.Max}!");
     }
 
     public void GetExp(Player player)

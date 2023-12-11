@@ -37,7 +37,7 @@ public class EnemyArcher : IEnemy
     {
         double OldStat = player.Speed.Max;
         player.Speed.Max += 0.2;
-        AnsiConsole.MarkupLine($"{player.Name} got a stat up!\n Speed : {OldStat} => {player.Speed.Max}!");
+        AnsiConsole.MarkupLine($"{player.Name} got a stat up!\n {Speed.ToString()} : {OldStat} => {player.Speed.Max}!");
     }
 
     public void GetExp(Player player)

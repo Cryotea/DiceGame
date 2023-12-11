@@ -34,7 +34,7 @@ public class EnemyKnight : IEnemy
     {
         double OldStat = player.Strength.Max;
         player.Strength.Max += 0.2;
-        AnsiConsole.MarkupLine($"{player.Name} got a stat up!\n Damage : {OldStat} => {player.Strength.Max}!");
+        AnsiConsole.MarkupLine($"{player.Name} got a stat up!\n {Strength.ToString()} : {OldStat} => {player.Strength.Max}!");
     }
     public void GetExp(Player player)
     {
