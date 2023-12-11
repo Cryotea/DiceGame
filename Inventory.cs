@@ -50,12 +50,17 @@ public class Inventory
                     .AddChoices(notEmptyItems
                     
                     ).UseConverter((item => item.ToString() )));
-        
-            
 
-            if (ItemSelection.Id == "Exit") return;
+
+
+            if (ItemSelection.Id == "Exit")
+            {
+                AnsiConsole.Clear();
+                return;
+            }
             
             ItemSelection.UseItem(player);
+            AnsiConsole.Clear();
             AnsiConsole.MarkupLine($"{player.Name} used {ItemSelection}");
             
             
@@ -74,13 +79,18 @@ public class Inventory
                     
                     ).UseConverter((item => item.ToString() )));
 
-            if (WeaponSelection.Id == "Exit") return;
+            if (WeaponSelection.Id == "Exit")
+            {
+                AnsiConsole.Clear();
+                return;
+            }
 
             
                 var weapon = AllWeapons.FirstOrDefault(weapon => weapon.Id == WeaponSelection.Id);
                 player.Weapon = weapon;
+                AnsiConsole.Clear();
                 AnsiConsole.MarkupLine($"{player.Name} equiped {weapon}!");
-                OpenInventory(player);
+                return;
         }
     }
 
