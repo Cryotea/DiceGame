@@ -22,8 +22,11 @@ public class Player : IFighter
 
     public bool PlayerMove(Player player, IFighter enemy, bool usedMove)
     {
-        
-        
+        AnsiConsole.MarkupLine($"\n{player.Name}'s {player.Health.ToString()}");
+        AnsiConsole.Write(new BreakdownChart()
+            .Width(30)
+            .AddItem($"Health", Health.Current, Color.Lime)
+            .AddItem($"LostHealth", Health.Max - Health.Current, Color.Grey15 ));
         
         string CurrentPlayerMove = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
@@ -115,7 +118,8 @@ public class Player : IFighter
                                   $"\n{NewStats[3].Item1} up!" +
                                   $"\n{OldStats[3].Item1} : {OldStats[3].Item2} => {NewStats[3].Item2}" +
                                   $"\n{NewStats[4].Item1} up!" +
-                                  $"\n{OldStats[4].Item1} : {OldStats[4].Item2} => {NewStats[4].Item2}"
+                                  $"\n{OldStats[4].Item1} : {OldStats[4].Item2} => {NewStats[4
+                                  ].Item2}"
                                   );
             AnsiConsole.Write(panel);
     
