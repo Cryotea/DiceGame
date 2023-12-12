@@ -13,6 +13,7 @@ public class Inventory
         new MediumPotion(),
         new GoldenFonduePizza(),
         new PotionOfRegenaration(),
+        new Broetchen(),
         new Exit()
 
     }; 
@@ -112,6 +113,7 @@ public class Inventory
         GainItem("SmallPotion", 1);
         GainItem("MediumPotion", 1);
         GainItem("PotionOfRegenaration", 1);
+        GainItem("Broetchen", 1);
         //Weapons
         GainWeapon("CopperShortSword");
         GainWeapon("NoWeapon");
