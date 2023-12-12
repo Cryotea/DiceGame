@@ -29,9 +29,10 @@ public class PoisenCrossbow :BaseWeapon, IWeapon
                 defender.Effect.Poisen.Item1 = poisenLevel;
                 defender.Effect.Poisen.Item2 += poisenDuration;
 
-                defender.Health.Current = defender.Health.Current - (Strength * 0.1) * dice + dice;
-                double Damage = (Strength * 0.1) * dice + dice;
-                AnsiConsole.MarkupLine($"{attacker.Name} rolled a [red]{dice}[/] and attacked {defender.Name} for [red]{Damage} Damage[/]!");
+                double DamageDone = Math.Round((Strength * 0.1) * dice + dice  ,2);
+                defender.Health.Current -= DamageDone;
+                defender.Health.Current = Math.Round(defender.Health.Current, 2);
+                AnsiConsole.MarkupLine($"{attacker.Name} rolled a [red]{dice}[/] and attacked {defender.Name} for [red]{DamageDone} Damage[/]! {defender.Name} has[green] {defender.Health.Current} HP[/] left!");
                 break;
         }
     }

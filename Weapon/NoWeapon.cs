@@ -11,9 +11,10 @@ public class NoWeapon :BaseWeapon, IWeapon
         var random = new Random();
         double dice = random.Next(1,7);
         
-        defender.Health.Current = defender.Health.Current - dice * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect);
-        AnsiConsole.MarkupLine($"\n{attacker.Name} rolled a [red]{dice}[/] and attacked {defender.Name} for [red]{dice * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect)} Damage[/]. {defender.Name} has [green]{defender.Health.Current} HP[/]left");
-        
+        double DamageDone = Math.Round(dice * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect)  ,2);
+        defender.Health.Current -= DamageDone;
+        defender.Health.Current = Math.Round(defender.Health.Current, 2);
+        AnsiConsole.MarkupLine($"\n{attacker.Name} rolled a [red]{dice}[/] and attacked {defender.Name} for [red]{DamageDone} Damage[/]. {defender.Name} has [green]{defender.Health.Current} HP[/]left");
     }
     public override string ToString()
     {

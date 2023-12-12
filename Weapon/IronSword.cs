@@ -13,8 +13,10 @@ public class IronSword:BaseWeapon, IWeapon
         double dice2 = random.Next(1,5);
         
       
-        defender.Health.Current = defender.Health.Current - (dice1 + dice2) * attacker.Strength.GetStat(attacker.Effect)  / defender.Defence.GetStat(defender.Effect);
-        AnsiConsole.MarkupLine($"\n{attacker.Name} rolled a [red]{dice1}[/] and a [red]{dice2}[/] and attacked {defender.Name} for [red]{(dice1 + dice2) * attacker.Strength.GetStat(attacker.Effect) / defender.Defence.GetStat(defender.Effect)} Damage[/]. {defender.Name} has[green] {defender.Health.Current} HP[/] left");
+        double DamageDone = Math.Round((dice1 + dice2) * attacker.Strength.GetStat(attacker.Effect)  / defender.Defence.GetStat(defender.Effect) ,2);
+        defender.Health.Current -= DamageDone;
+        defender.Health.Current = Math.Round(defender.Health.Current, 2);
+        AnsiConsole.MarkupLine($"\n{attacker.Name} rolled a [red]{dice1}[/] and a [red]{dice2}[/] and attacked {defender.Name} for [red]{DamageDone} Damage[/]. {defender.Name} has[green] {defender.Health.Current} HP[/] left");
         
     }
     public override string ToString()
