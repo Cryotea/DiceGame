@@ -11,7 +11,7 @@ public class EnemyKnight : IEnemy
     public Health Health {get; set;} = new Health(10);  
     public Stats.Strength Strength {get; set;} = new Stats.Strength(1);
     public Speed Speed {get; set;} = new Speed(0.5);
-    public Defence Defence {get; set;} = new Defence(1);
+    public Defence Defence {get; set;} = new Defence(1.5);
     public IWeapon Weapon {get; set;} = new IronSword ();
     public int EXP {get; set;} = 5;
     public Effect Effect {get; set;} = new Effect();

@@ -10,7 +10,7 @@ namespace diceGame.Enemy;
 public class EnemyArcher : IEnemy
 {
     public string Name {get; set;} = "Archer"; 
-    public Health Health {get; set;} = new Health(10);
+    public Health Health {get; set;} = new Health(15);
     public Stats.Strength Strength {get; set;} = new Stats.Strength(1);
     public Speed Speed {get; set;} = new Speed(1.5);
     public Defence Defence {get; set;} = new Defence(1.2);
