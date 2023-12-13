@@ -8,7 +8,7 @@ namespace diceGame.Enemy;
 
 public class EnemySkeletonArcher : IEnemy
 {
-    public string Name {get; set;} = "SkeletonArcher";
+    public string Name {get; set;} = $"{ColorManager.BasicEnemyColor}SkeletonArcher[/]";
     public Health Health {get; set;} = new Health(20);  
     public Stats.Strength Strength {get; set;} = new Stats.Strength(1);
     public Speed Speed {get; set;} = new Speed(0.5);

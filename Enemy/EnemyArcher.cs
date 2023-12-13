@@ -9,7 +9,7 @@ using Spectre.Console;
 namespace diceGame.Enemy;
 public class EnemyArcher : IEnemy
 {
-    public string Name {get; set;} = "Archer"; 
+    public string Name {get; set;} = $"{ColorManager.BasicEnemyColor}Archer[/]"; 
     public Health Health {get; set;} = new Health(15);
     public Stats.Strength Strength {get; set;} = new Stats.Strength(1);
     public Speed Speed {get; set;} = new Speed(1.5);
