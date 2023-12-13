@@ -5,9 +5,9 @@ namespace diceGame.Effects.Buffs;
 
 public class Regenaration : IBuff
 {
-    public static string ColorHealth = "[lime]";
+    public static string ColorHealth = ColorManager.HealthColor;
     
-    public static string Color = "[mediumorchid1_1]";
+    public static string Color = ColorManager.RegenerationColor;
     public static void Buff(IFighter user, int Level, int duration)
     {
         double Healed = user.Health.Max * ( Level * 0.1);
