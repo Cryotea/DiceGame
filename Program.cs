@@ -20,7 +20,7 @@ class Program
 
         bool hasFainted = false; 
 
-        player.Name = AnsiConsole.Ask<string>("Welcome to DiceGame Whats your [green]name[/]?");
+        player.Name = AnsiConsole.Ask<string>($"Welcome to DiceLike Whats your {ColorManager.PlayerColor}name[/]?");
 
         while (!hasFainted && Fight.GetEnemyEncounters() > 0)
         {
@@ -32,7 +32,7 @@ class Program
 
             player.Health.Current = player.Health.Max;
 
-           AnsiConsole.MarkupLine($"\n{player.Name} encountered a [red]{enemy.Name}[/] ");
+           AnsiConsole.MarkupLine($"\n{player.Name} encountered a {enemy.Name} ");
             while (!gameEnd)
             {
                 bool usedMove = false;
@@ -54,7 +54,7 @@ class Program
                 if (enemy.Health.Current <= 0)
                 {
                     gameEnd = true;
-                    AnsiConsole.MarkupLine($"\n{player.Name} defeated [red]{enemy.Name}[/]");
+                    AnsiConsole.MarkupLine($"\n{player.Name}defeated {enemy.Name}");
                 }
             }
             loot.GetLoot(player , enemy);
