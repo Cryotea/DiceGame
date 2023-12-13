@@ -5,6 +5,7 @@ public class BaseItem
 {
     public string Id {get; set;}
     public double Amount {get; set; }
-    public string Color = "[lightgoldenrod1]";
+    
+    public string Color = ColorManager.BasicItemColor;
 
 }
