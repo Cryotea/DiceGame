@@ -4,7 +4,7 @@ namespace diceGame.Stats;
 
 public class Health : BaseStat, IStat
 {
-    public string Color = "[lime]";
+    public string Color = ColorManager.HealthColor;
     public Health(double maxHealth)
     {
         Id = "Health";

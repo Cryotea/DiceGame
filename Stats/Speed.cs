@@ -5,7 +5,7 @@ namespace diceGame.Stats;
 
 public class Speed : BaseStat, IStat
 {
-    public string Color = "[paleturquoise1]";
+    public string Color = ColorManager.SpeedColor;
     public Speed (double maxSpeed)
     {
         Id = "Speed";

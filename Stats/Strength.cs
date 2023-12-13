@@ -5,7 +5,7 @@ namespace diceGame.Stats;
 
 public class Strength : BaseStat, IStat
 {
-    public string Color = "[maroon]";
+    public string Color = ColorManager.StrengthColor;
     public Strength (double maxStrength)
     {
         Id = "Strength";

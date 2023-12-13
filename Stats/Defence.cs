@@ -5,7 +5,7 @@ namespace diceGame.Stats;
 
 public class Defence : BaseStat, IStat
 {
-    public string Color = "[grey39]";
+    public string Color = ColorManager.DefenceColor;
     
     public Defence(double maxDefence)
     {
