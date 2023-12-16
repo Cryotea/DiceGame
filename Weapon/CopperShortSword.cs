@@ -6,7 +6,7 @@ public class CopperShortSword :BaseWeapon, IWeapon
 {
     public string Id {get; set;} = "CopperShortSword";
     public int Amount {get; set;} 
-    public void AttackPattern(IFighter attacker, IFighter defender)
+    public string AttackPattern(IFighter attacker, IFighter defender)
     {
         var random = new Random();
         double dice = random.Next(1,7);
@@ -14,7 +14,7 @@ public class CopperShortSword :BaseWeapon, IWeapon
         double DamageDone = Math.Round((dice + attacker.Speed.GetStat(attacker.Effect)) * attacker.Strength.GetStat(attacker.Effect)  / defender.Defence.GetStat(defender.Effect) ,2);
         defender.Health.Current -= DamageDone;
         defender.Health.Current = Math.Round(defender.Health.Current, 2);
-        AnsiConsole.MarkupLine($"\n{attacker.Name} rolled a [red]{dice} [/]and attacked {defender.Name} for [red] {DamageDone} Damage[/]. {defender.Name} has [green] {defender.Health.Current} HP [/]left");
+        return ($"\n{attacker.Name} rolled a [red]{dice} [/]and attacked {defender.Name} for [red] {DamageDone} Damage[/]. {defender.Name} has [green] {defender.Health.Current} HP [/]left");
         
     }
     public override string ToString()
