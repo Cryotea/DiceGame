@@ -20,7 +20,7 @@ public class Player : IFighter
     public Inventory Inventory {get; set;} = new Inventory(); 
     public int Money {get; set;} = 10;
 
-    public bool PlayerMove(Player player, IFighter enemy, bool usedMove)
+    public bool PlayerMove(Player player, IFighter enemy, bool usedMove, Log log)
     {
         AnsiConsole.MarkupLine($"\n{player.Name}'s {player.Health.Color}HP {player.Health.Current}[/]/{player.Health.Color}{player.Health.Max}[/]");
         AnsiConsole.Write(new BreakdownChart()
@@ -37,31 +37,30 @@ public class Player : IFighter
                     "Attack", "Inventory", $"{player.Name}'s Stats "
                 }));
         
-        // switch instead of if
         switch (CurrentPlayerMove)
         {
             case "Attack":
                 AnsiConsole.Clear();
                 Effect.GetBuffed(this);
                 Effect.GetDebuffed(this);
-                player.Weapon.AttackPattern(player, enemy);
+                log.AddMessage(player.Weapon.AttackPattern(player, enemy)); 
                 usedMove = true;
                 return usedMove;
                 
             case "Inventory":
-                Inventory.OpenInventory(this);
+                Inventory.OpenInventory(this, log);
                 usedMove = false;
                 return usedMove;
             
             default:
-                player.ShowStats();
+                player.ShowStats(log);
                 return false;
                 
         }
         
     }
 
-    public void ShowStats()
+    public void ShowStats(Log log)
     {
         var panel = new Panel($"Lvl:{Level}" +
                               $"\n{Health.ToString()}:{Health.Current}/{Health.Max}" +
@@ -78,6 +77,7 @@ public class Player : IFighter
         AnsiConsole.MarkupLine("press enter to go back");
         Console.ReadLine();
         AnsiConsole.Clear();
+        log.WriteTwoLatestMessage();
     }
 
     public void LevelUp()
