@@ -28,13 +28,13 @@ public class Inventory
         new Exit()
     };
 
-    public void OpenInventory(Player player)
+    public void OpenInventory(Player player, Log log)
     {
         var InventorySeletion= AnsiConsole.Prompt(
             new SelectionPrompt<string>()
                 .Title("[darkorange]Weapons[/] or [lightgoldenrod1]Items[/]?")
                 .PageSize(10)
-                .MoreChoicesText("[grey](Move up and down to reveal more fruits)[/]")
+                .MoreChoicesText("(Move up and down to reveal more [darkorange]Weapons)[/]")
                 .AddChoices(new[] {
                     "[darkorange]Weapons[/]","[lightgoldenrod1]Items[/]"
                 }));
@@ -57,12 +57,14 @@ public class Inventory
             if (ItemSelection.Id == "Exit")
             {
                 AnsiConsole.Clear();
+                log.WriteTwoLatestMessage();
                 return;
             }
             
             ItemSelection.UseItem(player);
             AnsiConsole.Clear();
-            AnsiConsole.MarkupLine($"{player.Name} used {ItemSelection}");
+            log.AddMessage($"\n{player.Name} used {ItemSelection}");
+            log.WriteTwoLatestMessage();
             
             
         }
@@ -83,6 +85,7 @@ public class Inventory
             if (WeaponSelection.Id == "Exit")
             {
                 AnsiConsole.Clear();
+                log.WriteTwoLatestMessage();
                 return;
             }
 
@@ -90,7 +93,8 @@ public class Inventory
                 var weapon = AllWeapons.FirstOrDefault(weapon => weapon.Id == WeaponSelection.Id);
                 player.Weapon = weapon;
                 AnsiConsole.Clear();
-                AnsiConsole.MarkupLine($"{player.Name} equiped {weapon}!");
+                log.AddMessage($"\n{player.Name} equiped {weapon}!");
+                log.WriteTwoLatestMessage();
                 return;
         }
     }
