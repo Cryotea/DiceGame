@@ -8,6 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        var log = new Log();
         var random = new Random();
 
         var loot = new Loot();
@@ -21,7 +22,8 @@ class Program
         bool hasFainted = false; 
 
         player.Name = AnsiConsole.Ask<string>($"Welcome to DiceLike Whats your {ColorManager.PlayerColor}name[/]?");
-
+        log.AddMessage($"Welcome to DiceLike Whats your {ColorManager.PlayerColor}name[/]? {player.Name}");
+        
         while (!hasFainted && Fight.GetEnemyEncounters() > 0)
         {
             var enemy = Fight.GetEnemy();  
@@ -32,18 +34,21 @@ class Program
 
             player.Health.Current = player.Health.Max;
 
-           AnsiConsole.MarkupLine($"\n{player.Name} encountered a {enemy.Name} ");
+            log.AddMessage(($"\n{player.Name} encountered a {enemy.Name} ")); 
+            log.WriteLatestMessage();
             while (!gameEnd)
             {
                 bool usedMove = false;
                 while (!usedMove)
                 {
-                    usedMove = player.PlayerMove(player , enemy, usedMove);
+                    usedMove = player.PlayerMove(player , enemy, usedMove, log);
                 }
                 
                 enemy.Effect.GetBuffed(enemy);
                 enemy.Effect.GetDebuffed(enemy);
-                enemy.Weapon.AttackPattern(enemy, player);
+                log.AddMessage(enemy.Weapon.AttackPattern(enemy, player)); 
+                
+                log.WriteTwoLatestMessage();
            
                 if (player.Health.Current <= 0)
                 {
