@@ -7,7 +7,7 @@ public class Exit : IItem, IWeapon
     public int Amount { get; set; } = 1;
     public string Id { get; set; } = "Exit";
     double IItem.Amount { get; set; } = 1;
-    public void AttackPattern(IFighter attacker, IFighter defender)
+    public string AttackPattern(IFighter attacker, IFighter defender)
     {
         throw new NotImplementedException();
     }
