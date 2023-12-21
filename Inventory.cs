@@ -48,9 +48,8 @@ public class Inventory
                     .Title("What [lightgoldenrod1]Item[/] do you want to use?")
                     .PageSize(10)
                     .MoreChoicesText("Move up and down to see more [lightgoldenrod1]Items[/]")
-                    .AddChoices(notEmptyItems
-                    
-                    ).UseConverter((item => item.ToString() )));
+                    .AddChoices(notEmptyItems)
+                    .UseConverter(item => item.Id == "Exit" ? item.ToString()! : $"{item} x{item.Amount}"));
 
 
 
