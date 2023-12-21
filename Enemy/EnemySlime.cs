@@ -9,6 +9,8 @@ namespace diceGame.Enemy;
 public class EnemySlime : IEnemy
 {
     public string Name {get; set;} = $"{ColorManager.BasicEnemyColor}Slime[/]"; 
+    
+    public string Id { get; set; } = "Slime";
     public Health Health {get; set;} = new Health(30);
     public Stats.Strength Strength {get; set;} = new Stats.Strength(0.5);
     public Speed Speed {get; set;} = new Speed(0.5);
