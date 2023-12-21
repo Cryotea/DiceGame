@@ -59,7 +59,7 @@ class Program
                 if (enemy.Health.Current <= 0)
                 {
                     gameEnd = true;
-                    AnsiConsole.MarkupLine($"\n{player.Name}defeated {enemy.Name}");
+                    AnsiConsole.MarkupLine($"\n{player.Name} defeated {enemy.Name}");
                 }
             }
             loot.GetLoot(player , enemy);
