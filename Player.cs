@@ -98,10 +98,10 @@ public class Player : IFighter
             
             Level++;
             EXP -= 10;
-            Health.Max = Health.Max + (Health.Max * 0.1);
-            Strength.Max = Strength.Max + (Strength.Max * 0.1);
-            Speed.Max = Speed.Max + (Speed.Max * 0.1);
-            Defence.Max = Defence.Max + (Defence.Max * 0.1);
+            Health.Max = Math.Round(Health.Max + (Health.Max * 0.1),2);
+            Strength.Max = Math.Round(Strength.Max + (Strength.Max * 0.1),2);
+            Speed.Max = Math.Round(Speed.Max + (Speed.Max * 0.1),2);
+            Defence.Max = Math.Round(Defence.Max + (Defence.Max * 0.1),2);
 
             NewStats = new (string, double)[]
             {
