@@ -8,7 +8,7 @@ namespace diceGame.Enemy.Boss;
 
 public class BossSlime : IBoss
 {
-    public string Name {get; set;} = $"{ColorManager.BasicEnemyColor}Boss Slime[/]"; 
+    public string Name {get; set;} = $"{ColorManager.BasicEnemyColor}Big Slime[/]"; 
     
     public string Id { get; set; } = "BossSlime";
     

@@ -7,7 +7,7 @@ using Spectre.Console;
 
 public class BossKnight : IBoss
 {
-    public string Name {get; set;} = $"{ColorManager.BasicEnemyColor}BossKnight[/]";
+    public string Name {get; set;} = $"{ColorManager.BasicEnemyColor}Paladin[/]";
 
     public string BaseEnemy { get; set; } = "Knight";
     

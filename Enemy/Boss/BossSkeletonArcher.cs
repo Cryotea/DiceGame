@@ -8,7 +8,7 @@ namespace diceGame.Enemy.Boss;
 
 public class BossSkeletonArcher : IBoss
 {
-    public string Name {get; set;} = $"{ColorManager.BasicEnemyColor}Boss SkeletonArcher[/]";
+    public string Name {get; set;} = $"{ColorManager.BasicEnemyColor}SkeletonCrossbowMaster[/]";
     
     public string Id { get; set; } = "BossSkeletonArcher";
     
