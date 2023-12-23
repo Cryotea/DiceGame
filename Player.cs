@@ -2,6 +2,7 @@ using diceGame.Item;
 using diceGame.Weapon;
 using diceGame.Enemy;
 using diceGame.Effects;
+using diceGame.Pet;
 using diceGame.Stats;
 using Spectre.Console;
 
@@ -14,6 +15,7 @@ public class Player : IFighter
     public Speed Speed {get; set;} = new Speed(1);
     public Defence Defence {get; set;} = new Defence(1);
     public IWeapon Weapon {get; set;} = new CopperShortSword();
+    public IPet Pet { get; set; } 
     public int EXP {get; set;} = 0;
     public double Level {get; set;} = 0;
     public Effect Effect {get; set;} = new Effect();
@@ -44,6 +46,7 @@ public class Player : IFighter
                 Effect.GetBuffed(this);
                 Effect.GetDebuffed(this);
                 log.AddMessage(player.Weapon.AttackPattern(player, enemy)); 
+                if (Pet != null) log.AddMessage(Pet.PetAction(player, enemy));
                 usedMove = true;
                 return usedMove;
                 
