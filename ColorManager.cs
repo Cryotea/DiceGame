@@ -25,5 +25,7 @@ public class ColorManager
     public static string PlayerColor = "[springgreen4]";
     
     public static string BasicEnemyColor = "[red]";
-    
+
+    public static string BasicPetColor = "[deepskyblue4_2]";
+
 }
