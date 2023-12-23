@@ -9,6 +9,7 @@ class Program
     static void Main(string[] args)
     {
         var log = new Log();
+        
         var random = new Random();
 
         var loot = new Loot();
@@ -16,6 +17,8 @@ class Program
         double dice = random.Next(1,7);
 
         var player = new Player();
+        
+        var eventManager= new EventManager();
 
         player.Inventory.GainStartEquip();
 
@@ -26,7 +29,11 @@ class Program
         
         while (!hasFainted && Fight.GetEnemyEncounters() > 0)
         {
-            var enemy = Fight.GetEnemy();  
+            eventManager.RandomEvent(player, log);
+            
+            var enemy = Fight.GetEnemy();
+
+            enemy.Health.Current = enemy.Health.Max;
 
             bool gameEnd = false;
 
@@ -59,6 +66,7 @@ class Program
                 if (enemy.Health.Current <= 0)
                 {
                     gameEnd = true;
+                    log.AddDefeatedEnemy(enemy);
                     AnsiConsole.MarkupLine($"\n{player.Name} defeated {enemy.Name}");
                 }
             }
