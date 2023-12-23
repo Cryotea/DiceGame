@@ -23,7 +23,7 @@ public class BossKnight : IBoss
     public LootTable LootTable {get; set;} = new LootTable();
     public object Clone()
     {
-        return new EnemyKnight()
+        return new BossKnight()
         {
             Name = Name,
             Health = Health,

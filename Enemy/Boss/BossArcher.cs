@@ -25,7 +25,7 @@ public class BossArcher : IBoss
     public LootTable LootTable {get; set;} = new LootTable();
     public object Clone()
     {
-        return new EnemyArcher()
+        return new BossArcher()
         {
             Name = Name,
             Health = Health,

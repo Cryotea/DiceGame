@@ -25,7 +25,7 @@ public class BossSlime : IBoss
     public LootTable LootTable {get; set;} = new LootTable();
     public object Clone()
     {
-        return new EnemySlime()
+        return new BossSlime()
         {
             Name = Name,
             Health = Health,
