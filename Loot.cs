@@ -15,6 +15,7 @@ public class Loot
        enemy.LootTable.GetWeaponDrop(player, enemy);
        enemy.GetStats(player);
        enemy.GetExp(player);
+       enemy.GetMoney(player);
     }
 
 }
