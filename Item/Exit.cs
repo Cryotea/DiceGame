@@ -2,8 +2,10 @@ using diceGame.Weapon;
 
 namespace diceGame.Item;
 
-public class Exit : IItem, IWeapon
+public class Exit : IItem, IWeapon, IShopItem
 {
+
+    public int BuyPrice { get; set; } = 0;
     public int Amount { get; set; } = 1;
     public string Id { get; set; } = "Exit";
     double IItem.Amount { get; set; } = 1;
