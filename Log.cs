@@ -6,6 +6,10 @@ namespace diceGame;
 
 public class Log
 {
+    public int Rounds { get; set; } = 0;
+
+    public int Fights { get; set; } = 0;
+    
     public List<string> MessageLog = new List<string>();
 
     public (IEnemy, int)[] DefeatedEnemies =
@@ -47,6 +51,16 @@ public class Log
             
             DefeatedEnemies[index].Item2++;
         }
+    }
+
+    public void FinishedRound()
+    {
+        Rounds++;
+    }
+
+    public void FinishedFight()
+    {
+        Fights++;
     }
     
 }
