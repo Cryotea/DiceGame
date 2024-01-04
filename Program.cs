@@ -56,6 +56,7 @@ class Program
                 log.AddMessage(enemy.Weapon.AttackPattern(enemy, player)); 
                 
                 log.WriteTwoLatestMessage();
+                log.FinishedRound();
            
                 if (player.Health.Current <= 0)
                 {
@@ -68,9 +69,11 @@ class Program
                     gameEnd = true;
                     log.AddDefeatedEnemy(enemy);
                     AnsiConsole.MarkupLine($"\n{player.Name} defeated {enemy.Name}");
+                    loot.GetLoot(player , enemy);
                 }
+                
             }
-            loot.GetLoot(player , enemy);
+            log.FinishedFight();
         }
 
         if (hasFainted)
