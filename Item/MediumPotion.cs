@@ -2,13 +2,14 @@
 using diceGame;
 
 namespace diceGame.Item;
-public class MediumPotion : BaseItem, IItem
+public class MediumPotion : BaseItem, IItem, IShopItem 
 {
     public MediumPotion()
     {
         Id = "MediumPotion";
     }
-    
+
+    public int BuyPrice { get; set; } = 15;
     
     private double Health = 30;
     public void UseItem(Player user)

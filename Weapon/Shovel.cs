@@ -2,10 +2,12 @@ using Spectre.Console;
 
 namespace diceGame.Weapon;
 
-public class Shovel:BaseWeapon, IWeapon
+public class Shovel:BaseWeapon, IWeapon, IShopItem
 {
     public string Id {get; set;} = "Shovel";
-    public int Amount {get; set;} 
+    public int Amount {get; set;}
+
+    public int BuyPrice { get; set; } = 30;
     public string AttackPattern(IFighter attacker, IFighter defender)
     {
         var random = new Random();

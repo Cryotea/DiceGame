@@ -1,12 +1,14 @@
 using Spectre.Console;
 namespace diceGame.Item;
 
-public class PotionOfRegenaration : BaseItem, IItem
+public class PotionOfRegenaration : BaseItem, IItem, IShopItem
 {
     public PotionOfRegenaration()
     {
         Id = "PotionOfRegenaration";
     }
+    
+    public int BuyPrice { get; set; } = 15;
     
     private int RegenarationLevel = 2;
     private int RegenarationDuration = 3;
