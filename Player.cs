@@ -71,6 +71,7 @@ public class Player : IFighter
                               $"\nWeapon:{Weapon}" +
                               $"\n{Speed.ToString()}:{Speed.Max}" +
                               $"\n{Defence.ToString()}:{Defence.Max}" +
+                              $"\nMoney:{Money}" +
                               $"\n{string.Join("\n", this.Effect.Info())}"
                               );
         
