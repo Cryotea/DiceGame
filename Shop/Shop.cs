@@ -34,30 +34,30 @@ public class Shop
             return;
         }
 
-        switch (BuyOptions.BuyPrice < player.Money)
-        {
-            case true:
-                var BoughtItem = player.Inventory.AllItems.FirstOrDefault(item => item.Id == BuyOptions.Id);
-                        if (BoughtItem is not null) BoughtItem.Amount++;
-                        
-                        var BoughtWeapons = player.Inventory.AllWeapons.FirstOrDefault(item => item.Id == BuyOptions.Id);
-                        if (BoughtWeapons is not null) BoughtWeapons.Amount++;
-                        
-                        player.Money -= BuyOptions.BuyPrice;
-                
-                        AnsiConsole.Clear();
-                        log.AddMessage($"\n{player.Name} bought {BuyOptions}");
-                        log.WriteTwoLatestMessage();
-                        break;
-            case false:
-                AnsiConsole.Clear();
-                log.AddMessage($"{player.Name} does not have enough {ColorManager.MoneyColor}Money[/] ");
-                log.WriteTwoLatestMessage();
-                break;
-        }
-        
-        OpenShop(player, log);
 
+
+        if (BuyOptions.BuyPrice < player.Money)
+        {
+             var BoughtItem = player.Inventory.AllItems.FirstOrDefault(item => item.Id == BuyOptions.Id);
+             if (BoughtItem is not null) BoughtItem.Amount++;
+                                    
+             var BoughtWeapons = player.Inventory.AllWeapons.FirstOrDefault(item => item.Id == BuyOptions.Id);
+             if (BoughtWeapons is not null) BoughtWeapons.Amount++;
+                                    
+             player.Money -= BuyOptions.BuyPrice;
+                            
+             AnsiConsole.Clear();
+             log.AddMessage($"\n{player.Name} bought {BuyOptions}");
+             log.WriteTwoLatestMessage();
+             
+        }
+        else
+        {
+             AnsiConsole.Clear();
+             log.AddMessage($"{player.Name} does not have enough {ColorManager.MoneyColor}Money[/] ");
+             log.WriteTwoLatestMessage();
+        }
+        OpenShop(player, log);
     }
     
 }
