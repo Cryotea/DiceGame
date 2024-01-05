@@ -6,6 +6,8 @@ namespace diceGame;
 public class EventManager
 {
     private Shop _shop = new Shop();
+
+    private bool _encounterdSmallSlime = false;
     public void RandomEvent(Player player, Log log)
     {
 
@@ -13,16 +15,15 @@ public class EventManager
         {
             var openshop = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
-                    .Title("you found a Shop! do you want to enter it?")
+                    .Title("you found a Shop! do you want to enter?")
                     .PageSize(10)
-                    .MoreChoicesText("[grey](Move up and down to reveal more fruits)[/]")
                     .AddChoices(new[] {
                         "yes", "no",
                     }));
             if (openshop == "yes")_shop.OpenShop(player, log);
         }
         
-        if (log.DefeatedEnemies[0].Item2 == 2 && log.DefeatedEnemies[4].Item2 == 1)
+        if (log.DefeatedEnemies[0].Item2 == 2 && log.DefeatedEnemies[4].Item2 == 1 && _encounterdSmallSlime == false)
         {
             var answer = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
@@ -33,7 +34,8 @@ public class EventManager
                     }));
 
             if (answer == "Yes")player.Pet = new PetSlime();
-            
+
+            _encounterdSmallSlime = true;
         }
         
     }
