@@ -28,4 +28,6 @@ public class ColorManager
 
     public static string BasicPetColor = "[deepskyblue4_2]";
 
+    public static string MoneyColor = "[khaki3]";
+
 }
