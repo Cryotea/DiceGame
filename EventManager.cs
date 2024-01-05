@@ -5,7 +5,11 @@ namespace diceGame;
 
 public class EventManager
 {
+    private Random random = new Random();
+    
     private Shop _shop = new Shop();
+
+    private GetRandomPet _randomPet = new GetRandomPet();
 
     private bool _encounterdSmallSlime = false;
     public void RandomEvent(Player player, Log log)
@@ -37,6 +41,11 @@ public class EventManager
 
             _encounterdSmallSlime = true;
         }
-        
+
+        if (random.Next(1, 11) <= 9  && log.Fights > 0)
+        {
+            log.AddMessage(_randomPet.RandomPet(player));
+            log.WriteLatestMessage();
+        }
     }
 }
