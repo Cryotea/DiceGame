@@ -9,6 +9,8 @@ public interface IPet
     public string Id { get; set; }
     
     public string PetAction(Player player, IFighter enemy);
-    
-    
+
+    public string GetPet(Player player);
+
+
 }
