@@ -14,4 +14,9 @@ public class PetSlime : IPet
         enemy.Health.Current = Math.Round(enemy.Health.Current - DamageDone);
         return ($"{player.Name}'s {Name} attacked {enemy.Name} for {DamageDone}! {enemy.Name} has {enemy.Health.Current} HP left!");
     }
+    
+    public string GetPet(Player player)
+    {
+        return "not yet implemented";
+    }
 }
