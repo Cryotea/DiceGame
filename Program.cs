@@ -29,6 +29,7 @@ class Program
         
         while (!hasFainted && Fight.GetEnemyEncounters() > 0)
         {
+            AnsiConsole.Clear();
             eventManager.RandomEvent(player, log);
             
             var enemy = Fight.GetEnemy();
@@ -40,7 +41,7 @@ class Program
             if (hasFainted) break;
 
             player.Health.Current = player.Health.Max;
-
+            
             log.AddMessage(($"\n{player.Name} encountered a {enemy.Name} ")); 
             log.WriteLatestMessage();
             while (!gameEnd)
