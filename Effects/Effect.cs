@@ -30,20 +30,29 @@ public class Effect
     /// runs Buff Methode on a Buff if the Duration is atleast 1 , and decreases it by one.
     /// </summary>
     /// <param name="fighter"></param>
-    public void GetBuffed(IFighter fighter)
+    public string? GetBuffed(IFighter fighter)
     {
         if(fighter.Effect.Regenaration.Item2 > 0)
         {
-            Buffs.Regenaration.Buff(fighter, Regenaration.Item1, Regenaration.Item2 );
             Regenaration.Item2--;
+            return Buffs.Regenaration.Buff(fighter, Regenaration.Item1, Regenaration.Item2 );
+        }
+
+        else
+        {
+            return null;
         }
     }
-    public void GetDebuffed(IFighter fighter)
+    public string? GetDebuffed(IFighter fighter)
     {
         if(fighter.Effect.Poisen.Item2 > 0)
         {
-            Debuffs.Poisen.Debuff(fighter, Poisen.Item1 , Poisen.Item2);
             Poisen.Item2--;
+            return Debuffs.Poisen.Debuff(fighter, Poisen.Item1 , Poisen.Item2);
+        }
+        else
+        {
+            return null;
         }
     }
 

@@ -8,7 +8,7 @@ public class Regenaration : IBuff
     public static string ColorHealth = ColorManager.HealthColor;
     
     public static string Color = ColorManager.RegenerationColor;
-    public static void Buff(IFighter user, int Level, int duration)
+    public static string Buff(IFighter user, int Level, int duration)
     {
         double Healed = user.Health.Max * ( Level * 0.1);
         user.Health.Current = user.Health.Current + (user.Health.Max * ( Level * 0.1));
@@ -16,6 +16,6 @@ public class Regenaration : IBuff
         {
             user.Health.Current = user.Health.Max;
         }
-        AnsiConsole.MarkupLine($"{user.Name}'s {Color}Regeneration[/] healed them for {Color}{Healed}[/]!\n{user.Name} has {ColorHealth}{user.Health.Current}Hp[/] now! \nThe duration is of{Color} Regeneration[/] is {user.Effect.Regenaration.Item2}");
+        return $"{user.Name}'s {Color}Regeneration[/] healed them for {Color}{Healed}[/]!\n{user.Name} has {ColorHealth}{user.Health.Current}Hp[/] now! \nThe duration is of{Color} Regeneration[/] is {user.Effect.Regenaration.Item2}";
     }
 }

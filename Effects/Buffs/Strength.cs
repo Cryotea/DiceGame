@@ -4,8 +4,8 @@ namespace diceGame.Effects;
 
 public class Strength : IBuff
 {
-    public static void Buff(IFighter user, int Level, int duration)
+    public static string Buff(IFighter user, int Level, int duration)
     {
-        
+        return "test";
     }
 }
