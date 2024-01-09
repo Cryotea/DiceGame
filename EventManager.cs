@@ -45,7 +45,6 @@ public class EventManager
         if (random.Next(1, 11) <= 9  && log.Fights > 0)
         {
             log.AddMessage(_randomPet.RandomPet(player));
-            log.WriteLatestMessage();
         }
     }
 }
