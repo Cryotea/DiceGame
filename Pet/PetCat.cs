@@ -47,7 +47,7 @@ public class PetCat: IPet
             return $"{player.Name} now has a {ColorManager.BasicPetColor}Cat[/] following them.";
         }
 
-        return $"{player.Name} let the{ColorManager.BasicPetColor}Cat[/] to be on its own little adventure";
+        return $"{player.Name} let the{ColorManager.BasicPetColor} Cat[/] to be on its own little adventure";
     }
 
 }

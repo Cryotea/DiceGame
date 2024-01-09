@@ -16,10 +16,10 @@ public class PetPotato :IPet
         if (attackChance >= 95)
         {
             enemy.Health.Current = enemy.Health.Current - 99_999_999;
-            return $"{ColorManager.BasicPetColor}Potato[/] shot a DEATHRAY and damaged {enemy.Name} for 99999999 Damage!? ";
+            return $"{ColorManager.BasicPetColor}Potato[/] shot a DEATHRAY and damaged {enemy.Name} for [red]99999999 Damage[/]!? ";
         }
 
-        return $"The Potato is looking at you...";
+        return $"The {ColorManager.BasicPetColor}Potato[/] is looking at you...";
 
 
     }
