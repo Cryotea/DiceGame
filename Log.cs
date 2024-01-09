@@ -10,8 +10,10 @@ public class Log
 
     public int Fights { get; set; } = 0;
     
-    public List<string> MessageLog = new List<string>();
+    public List<List<string>> MessageLogRound = new List<List<string>>();
 
+    public List<string> LastRound = new List<string>();
+    
     public (IEnemy, int)[] DefeatedEnemies =
     {
         (new EnemySlime(),0),
@@ -26,22 +28,26 @@ public class Log
         (new BossSkeletonArcher(),0)
         
     };
-    public void AddMessage(string Message)
+
+    public void ArchiveAndResetLastRound()
     {
-        MessageLog.Add(Message);
-    }
-    //TODO Rename Methode
-    public void WriteTwoLatestMessage()
-    {
-        AnsiConsole.MarkupLine($"{MessageLog[MessageLog.Count - 2]}");
-        AnsiConsole.MarkupLine($"{MessageLog[MessageLog.Count - 1]}");
+        MessageLogRound.Add(LastRound);
+        LastRound.Clear();
     }
     
-    public void WriteLatestMessage()
+    public void AddMessage(string Message)
     {
-        AnsiConsole.MarkupLine($"{MessageLog[MessageLog.Count - 1]}");
+        LastRound.Add(Message);
     }
-
+    
+    public void WriteLastRound()
+    {
+        foreach (string Text in LastRound)
+        {
+            AnsiConsole.MarkupLine(Text);
+        }
+    }
+    
     public void AddDefeatedEnemy(IEnemy enemy)
     {
         int index = Array.FindIndex(DefeatedEnemies, item => item.Item1.Id == enemy.Id);
