@@ -43,8 +43,8 @@ public class Player : IFighter
         {
             case "Attack":
                 AnsiConsole.Clear();
-                Effect.GetBuffed(this);
-                Effect.GetDebuffed(this);
+                log.AddMessage(Effect.GetBuffed(this)); 
+                log.AddMessage(Effect.GetDebuffed(this)); 
                 log.AddMessage(player.Weapon.AttackPattern(player, enemy)); 
                 if (Pet != null) log.AddMessage(Pet.PetAction(player, enemy));
                 usedMove = true;
@@ -81,7 +81,7 @@ public class Player : IFighter
         AnsiConsole.MarkupLine("press enter to go back");
         Console.ReadLine();
         AnsiConsole.Clear();
-        log.WriteTwoLatestMessage();
+        log.WriteLastRound();
     }
 
     public void LevelUp()
@@ -129,7 +129,7 @@ public class Player : IFighter
                                   ].Item2}"
                                   );
             AnsiConsole.Write(panel);
-    
+
         }
     }
 
