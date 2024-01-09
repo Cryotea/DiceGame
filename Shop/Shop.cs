@@ -45,13 +45,13 @@ public class Shop
 
                 AnsiConsole.Clear();
                 log.AddMessage($"\n{player.Name} bought {BuyOptions}");
-                log.WriteTwoLatestMessage();
+                log.WriteLastRound();
             }
             else
             {
                 AnsiConsole.Clear();
                 log.AddMessage($"{player.Name} does not have enough {ColorManager.MoneyColor}Money[/] ");
-                log.WriteTwoLatestMessage();
+                log.WriteLastRound();
             }
         }
     }

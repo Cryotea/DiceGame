@@ -43,7 +43,7 @@ class Program
             player.Health.Current = player.Health.Max;
             
             log.AddMessage(($"\n{player.Name} encountered a {enemy.Name} ")); 
-            log.WriteLatestMessage();
+            log.WriteLastRound();
             while (!gameEnd)
             {
                 bool usedMove = false;
@@ -56,9 +56,11 @@ class Program
                 enemy.Effect.GetDebuffed(enemy);
                 log.AddMessage(enemy.Weapon.AttackPattern(enemy, player)); 
                 
-                log.WriteTwoLatestMessage();
+                
+                log.WriteLastRound();
                 log.FinishedRound();
-           
+                log.ArchiveAndResetLastRound();
+                
                 if (player.Health.Current <= 0)
                 {
                     gameEnd = true;
@@ -71,6 +73,8 @@ class Program
                     log.AddDefeatedEnemy(enemy);
                     AnsiConsole.MarkupLine($"\n{player.Name} defeated {enemy.Name}");
                     loot.GetLoot(player , enemy);
+                    AnsiConsole.MarkupLine("press enter to continue");
+                    Console.ReadLine();
                 }
                 
             }

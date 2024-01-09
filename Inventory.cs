@@ -56,14 +56,14 @@ public class Inventory
             if (ItemSelection.Id == "Exit")
             {
                 AnsiConsole.Clear();
-                log.WriteTwoLatestMessage();
+                log.WriteLastRound();
                 return;
             }
             
             ItemSelection.UseItem(player);
             AnsiConsole.Clear();
             log.AddMessage($"\n{player.Name} used {ItemSelection}");
-            log.WriteTwoLatestMessage();
+            log.WriteLastRound();
             
             
         }
@@ -84,7 +84,7 @@ public class Inventory
             if (WeaponSelection.Id == "Exit")
             {
                 AnsiConsole.Clear();
-                log.WriteTwoLatestMessage();
+                log.WriteLastRound();
                 return;
             }
 
@@ -93,7 +93,7 @@ public class Inventory
                 player.Weapon = weapon;
                 AnsiConsole.Clear();
                 log.AddMessage($"\n{player.Name} equiped {weapon}!");
-                log.WriteTwoLatestMessage();
+                log.WriteLastRound();
                 return;
         }
     }
